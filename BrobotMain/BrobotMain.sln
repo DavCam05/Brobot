@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.128
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrobotMain", "BrobotMain.csproj", "{42B0A820-1DB6-42D5-9AC5-24E0851EE70F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrobotTest", "..\BrobotTest\BrobotTest.csproj", "{44D556E8-395E-4EB1-9987-EB2027C8D03F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{42B0A820-1DB6-42D5-9AC5-24E0851EE70F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42B0A820-1DB6-42D5-9AC5-24E0851EE70F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42B0A820-1DB6-42D5-9AC5-24E0851EE70F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42B0A820-1DB6-42D5-9AC5-24E0851EE70F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44D556E8-395E-4EB1-9987-EB2027C8D03F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44D556E8-395E-4EB1-9987-EB2027C8D03F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44D556E8-395E-4EB1-9987-EB2027C8D03F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44D556E8-395E-4EB1-9987-EB2027C8D03F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D70495F7-0738-4CDB-B8AF-2BE1AC6F54EB}
+	EndGlobalSection
+EndGlobal

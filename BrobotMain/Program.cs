@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Brobot
+namespace BrobotMain
 {
     class Program
     {
