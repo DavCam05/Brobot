@@ -4,10 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Brobot.Commands;
 using DSharpPlus;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.Entities;
 using DSharpPlus.EventArgs;
+using DSharpPlus.Interactivity;
 using Newtonsoft.Json;
 
 namespace Brobot
@@ -15,8 +17,9 @@ namespace Brobot
     public class Bot
     {
         public DiscordClient Client { get; private set; } //Initialises the bot
-        public CommandsNextExtension Commands { get; private set; } //initialises the commands
-        
+        public InteractivityExtension interactivity { get; private set; }
+        public CommandsNextExtension Commands { get; private set; }
+         
         public async Task RunAsync() //Run method
         {
             //gets the config json file
@@ -40,15 +43,25 @@ namespace Brobot
 
             Client.Ready += OnClientReady;
 
+            Client.UseInteractivity(new InteractivityConfiguration
+            {
+                Timeout = TimeSpan.FromMinutes(2)
+            });
+
             //initialises the commands properties
-            var commandsConfig = new CommandsNextConfiguration
+            var commandConfig = new CommandsNextConfiguration
             {
                 StringPrefixes = new String[] { configJson.Prefix },
                 EnableDms = false,
-                EnableMentionPrefix = true
+                EnableMentionPrefix = true,
+                DmHelp = true,
+
             };
 
-            Commands = Client.UseCommandsNext(commandsConfig);
+            Commands = Client.UseCommandsNext(commandConfig);
+
+            Commands.RegisterCommands<InfoCommands>();
+           
 
             await Client.ConnectAsync(); //connects the bot to discord
             await Task.Delay(-1); //DO NOT REMOVE. This keeps the bot running
