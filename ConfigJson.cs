@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace Brobot
 {
-    public struct ConfigJson
+    public struct ConfigJson //gets the data from config.josn
     {
         [JsonProperty("token")]
         public string Token { get; private set; }
