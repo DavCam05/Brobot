@@ -10,9 +10,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DSharpPlus" Version="4.0.0-nightly-00722" />
-    <PackageReference Include="DSharpPlus.CommandsNext" Version="4.0.0-nightly-00722" />
-    <PackageReference Include="DSharpPlus.Interactivity" Version="4.0.0-nightly-00722" />
+    <PackageReference Include="Discord.Net" Version="2.2.0" />
+    <PackageReference Include="Discord.Net.Commands" Version="2.2.0" />
+    <PackageReference Include="Discord.Net.Core" Version="2.2.0" />
+    <PackageReference Include="Discord.Net.WebSocket" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.8" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.8" />
+    <PackageReference Include="NetEscapades.Configuration.Yaml" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="_config.yml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

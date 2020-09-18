@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Threading.Tasks;
-using DSharpPlus;
+using Discord.Net;
 
 namespace Brobot
 {
     class Program
     {
 
-        static void Main(string[] args)
-        {
-            //starts the bot
-            Bot bot = new Bot();
-            bot.RunAsync().GetAwaiter().GetResult();
-        }
+        public static async Task Main(string[] args)
+           => await Startup.RunAsync(args);           
+        
    
     }
 }
