@@ -56,6 +56,7 @@ namespace Brobot.Services
 
         public Task OnReady()
         {
+            _discord.SetGameAsync("Pre-Release");
             Console.WriteLine("Brobot is up and running!");
             Console.WriteLine($"Connected as: {_discord.CurrentUser.Username}#{_discord.CurrentUser.Discriminator}");
             return Task.CompletedTask;
