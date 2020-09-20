@@ -15,7 +15,6 @@ namespace Brobot.Commands
         {
             var builder = new EmbedBuilder()
                  .WithTitle("Help Menu")
-                 .WithThumbnailUrl(Context.User.GetAvatarUrl() ?? Context.User.GetDefaultAvatarUrl())
                  .WithDescription("Welcome to the Brobot help center. Type `help.[command]` to learn more about the available commands")
                  .AddField("Commands", "`help` sends this embed " +
                  "\n`info.bot.ping` pings the bot " +
@@ -27,5 +26,62 @@ namespace Brobot.Commands
             var embed = builder.Build();
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
+
+        [Command("help.info.bot.ping")]
+        public async Task HelpPing()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `info.bot.ping`")
+                .AddField("Description", "This commad returns the ping time of the bot", true)
+                .AddField("Arguments", "None", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("help.info.user.me")]
+        public async Task HelpMyInfo()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `info.user.me`")
+                .AddField("Description", "This commad returns info about you", true)
+                .AddField("Arguments", "None", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("help.info.user.other")]
+        public async Task HelpUserInfo()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `info.user.other`")
+                .AddField("Description", "This command returns info about a specified user", true)
+                .AddField("Arguments", "`<User>` Mention the user that you need info from", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("help.info.server")]
+        public async Task HelpServerInfo()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `info.server`")
+                .AddField("Description", "This command returns info about the server", true)
+                .AddField("Arguments", "None", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
     }
 }

@@ -46,8 +46,9 @@ namespace Brobot.Services
                     var reason = result.Error;
                     Console.WriteLine("There has been an error!");
                     Console.WriteLine(reason);
+                    Console.WriteLine(result);
 
-                    await context.Channel.SendMessageAsync($"There has been an error in executing your command. Here's the error: \n {reason} \n Please contact TheDeveloper#2860 if you encounter further problems.");
+                    await context.Channel.SendMessageAsync($"There has been an error in executing your command. Here's the error: \n ```{result}``` \n Please contact TheDeveloper#2860 if you encounter further problems.");
 
                     
                 }
