@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -11,13 +12,15 @@ using Discord.Commands;
 using JikanDotNet;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
+using YamlDotNet.Core.Tokens;
+using YamlDotNet.RepresentationModel;
 
 namespace Brobot.Commands   
 {
     public class FetchApi : ModuleBase
     {
-        [Command("fetch.anime")]
-        public async Task Anime(string query)
+        [Command("fetch.anime")] //command name
+        public async Task Anime(string query) //command method
         {
             Console.WriteLine("Search query: " + query);
             IJikan jikan = new Jikan();
@@ -78,5 +81,26 @@ namespace Brobot.Commands
             Console.WriteLine("Search was Successful");
         }
 
+        [Command("fetch.mal.character")]
+        public async Task MangaCharacter(string query)
+        {
+            Console.WriteLine("Search query: " + query);
+            IJikan jikan = new Jikan();
+
+            var services = new ServiceCollection().AddSingleton<IJikan, Jikan>().BuildServiceProvider();
+
+            CharacterSearchResult result = await jikan.SearchCharacter(query);
+
+            var builder = new EmbedBuilder()
+                .WithTitle(result.Results.First().Name)
+                .WithImageUrl(result.Results.First().ImageURL)
+                .AddField("MyAnimeList 🆔", result.Results.First().MalId, true)
+                .WithFooter(result.Results.First().URL)
+                .WithColor(245, 120, 66);
+            
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+            Console.WriteLine("Search was Successful");
+        }
     }
 }

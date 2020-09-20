@@ -21,7 +21,10 @@ namespace Brobot.Commands
                  "\n`info.bot.ping` pings the bot " +
                  "\n`info.user.me` sends info about you" +
                  "\n`info.user.other` sends info about another user" +
-                 "\n`info.server` sends the info about the server the bot is in")
+                 "\n`info.server` sends the info about the server the bot is in" +
+                 "\n`fetch.anime` fetches anime info on MAL" +
+                 "\n`fetch.manga` fetches manga info on MAL" +
+                 "\n`fetch.mal.character` fetches anime/manga character info on MAL")
                  .WithColor(33, 176, 252);
 
             var embed = builder.Build();
@@ -84,5 +87,46 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
 
+        [Command("help.fetch.anime")]
+        public async Task HelpFetchAnime()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `fetch.anime`")
+                .AddField("Description", "This command returns information about your searched anime. Uses the Jikan.Net Wrapper for MAL", true)
+                .AddField("Arguments", "<query> This is the search query. Make sure to place it between double inverted commas", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("help.fetch.manga")]
+        public async Task HelpFetchManga()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `fetch.manga`")
+                .AddField("Description", "This command returns information about your searched manga. Uses the Jikan.Net Wrapper for MAL", true)
+                .AddField("Arguments", "<query> This is the search query. Make sure to place it between double inverted commas", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("help.fetch.mal.character")]
+        public async Task HelpFetchCharacter()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `fetch.mal.character`")
+                .AddField("Description", "This command returns information about your searched character. Uses the Jikan.Net Wrapper for MAL", true)
+                .AddField("Arguments", "<query> This is the search query. Make sure to place it between double inverted commas", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
     }
 }
