@@ -15,7 +15,8 @@ namespace Brobot.Commands
         {
             var builder = new EmbedBuilder()
                  .WithTitle("Help Menu")
-                 .WithDescription("Welcome to the Brobot help center. Type `help.[command]` to learn more about the available commands")
+                 .WithUrl("https://github.com/DavCam05/Brobot/wiki/Commands")
+                 .WithDescription("Welcome to the Brobot help center. Type `help.[command]` to learn more about the available commands. Alternatively you can visit the GitHub Repository. Link is in the title")
                  .AddField("Commands", "`help` sends this embed " +
                  "\n`info.bot.ping` pings the bot " +
                  "\n`info.user.me` sends info about you" +

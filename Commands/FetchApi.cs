@@ -72,7 +72,7 @@ namespace Brobot.Commands
                 .AddField("Manga Members count on MAL 🧑🏻‍🤝‍🧑🏽", result.Results.First().Members, true)
                 .WithFooter(result.Results.First().URL)
                 .WithColor(157, 252, 3);
-
+            
             var embed = builder.Build();
             await Context.Channel.SendMessageAsync(null, false, embed);
             Console.WriteLine("Search was Successful");
