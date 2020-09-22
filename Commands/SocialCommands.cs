@@ -23,5 +23,32 @@ namespace Brobot.Commands
                 await Context.Channel.SendMessageAsync(null, false, embed);
             
         }
+
+        [Command("social.donate")]
+        public async Task Donate()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Donate")
+                .WithUrl("https://streamelements.com/davcam0055/tip")
+                .WithDescription("Donate to the owner of the bot. The link sends you to StreamElements tip page. run `social.twitch` to know when TheDeveloper#2860 streams")
+                .WithColor(3, 69, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+
+        }
+
+        [Command("social.twitch")]
+        public async Task Twitch()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("DavCam0055's Twitch Page")
+                .WithUrl("https://twitch.tv/davcam0055")
+                .WithDescription("DavCam0055 (TheDeveloper#2860) streams on twitch, check the page to know more")
+                .WithColor(169, 3, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
     }
 }
