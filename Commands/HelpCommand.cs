@@ -27,7 +27,9 @@ namespace Brobot.Commands
                  "\n`fetch.mal.character` fetches anime/manga character info on MAL" +
                  "\n`social.github` sends the github repo of the bot" +
                  "\n`social.twitch` sends the twitch page of the owner of the bot" +
-                 "\n social.donate` sends the donation page of the owner of the bot")
+                 "\n`social.donate` sends the donation page of the owner of the bot" +
+                 "\n`create.text` creates a text channel" +
+                 "\n`create.voice` creates a voice channel")
                  .WithColor(33, 176, 252);
 
             var embed = builder.Build();
@@ -97,7 +99,7 @@ namespace Brobot.Commands
                 .WithTitle("Help Menu")
                 .WithDescription("Command: `fetch.anime`")
                 .AddField("Description", "This command returns information about your searched anime. Uses the Jikan.Net Wrapper for MAL", true)
-                .AddField("Arguments", "<query> This is the search query. Make sure to place it between double inverted commas", true)
+                .AddField("Arguments", "`<query` This is the search query. Make sure to place it between double inverted commas", true)
                 .WithColor(33, 176, 252);
 
             var embed = builder.Build();
@@ -111,7 +113,7 @@ namespace Brobot.Commands
                 .WithTitle("Help Menu")
                 .WithDescription("Command: `fetch.manga`")
                 .AddField("Description", "This command returns information about your searched manga. Uses the Jikan.Net Wrapper for MAL", true)
-                .AddField("Arguments", "<query> This is the search query. Make sure to place it between double inverted commas", true)
+                .AddField("Arguments", "`<query>` This is the search query. Make sure to place it between double inverted commas", true)
                 .WithColor(33, 176, 252);
 
             var embed = builder.Build();
@@ -125,7 +127,7 @@ namespace Brobot.Commands
                 .WithTitle("Help Menu")
                 .WithDescription("Command: `fetch.mal.character`")
                 .AddField("Description", "This command returns information about your searched character. Uses the Jikan.Net Wrapper for MAL", true)
-                .AddField("Arguments", "<query> This is the search query. Make sure to place it between double inverted commas", true)
+                .AddField("Arguments", "`<query>` This is the search query. Make sure to place it between double inverted commas", true)
                 .WithColor(33, 176, 252);
 
             var embed = builder.Build();
@@ -167,6 +169,34 @@ namespace Brobot.Commands
                 .WithDescription("Command: `social.donate`")
                 .AddField("Description", "This command returns the donation page of the owner of the bot", true)
                 .AddField("Arguments", "none", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("help.create.text")]
+        public async Task HelpText()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `create.text`")
+                .AddField("Description", "This command creates a text channel", true)
+                .AddField("Arguments", "`<channelname>` The name of the channel. enclose the name in inverted commas", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("help.create.voice")]
+        public async Task HelpVoice()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `create.text`")
+                .AddField("Description", "This command creates a voice channel", true)
+                .AddField("Arguments", "`<channelname>` The name of the channel. enclose the name in inverted commas", true)
                 .WithColor(33, 176, 252);
 
             var embed = builder.Build();
