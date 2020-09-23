@@ -24,7 +24,10 @@ namespace Brobot.Commands
                  "\n`info.server` sends the info about the server the bot is in" +
                  "\n`fetch.anime` fetches anime info on MAL" +
                  "\n`fetch.manga` fetches manga info on MAL" +
-                 "\n`fetch.mal.character` fetches anime/manga character info on MAL")
+                 "\n`fetch.mal.character` fetches anime/manga character info on MAL" +
+                 "\n`social.github` sends the github repo of the bot" +
+                 "\n`social.twitch` sends the twitch page of the owner of the bot" +
+                 "\n social.donate` sends the donation page of the owner of the bot")
                  .WithColor(33, 176, 252);
 
             var embed = builder.Build();
@@ -123,6 +126,47 @@ namespace Brobot.Commands
                 .WithDescription("Command: `fetch.mal.character`")
                 .AddField("Description", "This command returns information about your searched character. Uses the Jikan.Net Wrapper for MAL", true)
                 .AddField("Arguments", "<query> This is the search query. Make sure to place it between double inverted commas", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("help.social.github")]
+        public async Task HelpSocialGithub()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `social.github`")
+                .AddField("Description", "This command returns the github page of the bot", true)
+                .AddField("Arguments", "none", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+        [Command("help.social.twitch")]
+        public async Task HelpTwitch()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `social.twitch`")
+                .AddField("Description", "This command returns the twitch page of the owner of the bot", true)
+                .AddField("Arguments", "none", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("help.social.donate")]
+        public async Task HelpDonate()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `social.donate`")
+                .AddField("Description", "This command returns the donation page of the owner of the bot", true)
+                .AddField("Arguments", "none", true)
                 .WithColor(33, 176, 252);
 
             var embed = builder.Build();

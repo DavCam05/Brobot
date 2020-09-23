@@ -30,7 +30,7 @@ namespace Brobot.Commands
             var builder = new EmbedBuilder()
                 .WithTitle("Donate")
                 .WithUrl("https://streamelements.com/davcam0055/tip")
-                .WithDescription("Donate to the owner of the bot. The link sends you to StreamElements tip page. run `social.twitch` to know when TheDeveloper#2860 streams")
+                .WithDescription("Donate to the owner of the bot. The link sends you to StreamElements tip page. run `social.twitch` to know when TheDeveloper#2860 streams. You can also donate on https://patreon.com/davidecammarano")
                 .WithColor(3, 69, 252);
 
             var embed = builder.Build();
