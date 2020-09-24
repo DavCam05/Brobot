@@ -22,7 +22,7 @@ namespace Brobot.Commands
         public async Task UserInfo()
         {
             var builder = new EmbedBuilder()
-                .WithTitle($"User info for {Context.User.Mention} ")
+                .WithTitle($"<:discord:314003252830011395> User info for {Context.User.Mention} ")
                 .WithThumbnailUrl(Context.User.GetAvatarUrl() ?? Context.User.GetDefaultAvatarUrl())
                 .WithDescription("This is your info")
                 .WithColor(new Color(33, 176, 252))
@@ -33,9 +33,9 @@ namespace Brobot.Commands
                 .AddField("Account Creation Date 🍰", Context.User.CreatedAt.ToString("dd/MM/yyyy"), true)
                 .AddField("Joined At 📥", (Context.User as SocketGuildUser).JoinedAt.Value.ToString("dd/MM/yyyy"), true)
                // .AddField("Roles", string.Join(" ", (Context.User as SocketGuildUser).Roles.Select(x => x.Mention)))
-                .AddField("Activity 🎽", Context.User.Activity)
-                .AddField("Status 🟢 🌙 🔴", Context.User.Status )
-                .AddField("Are you a bot? 🤖", Context.User.IsBot, true)
+                .AddField("Activity <a:typing:393848431413559296>", Context.User.Activity)
+                .AddField("Status <:online2:464520569975603200> <:offline2:464520569929334784> <:away2:464520569862357002> <:dnd2:464520569560498197>", Context.User.Status )
+                .AddField("Are you a bot? <:botTag:230105988211015680>", Context.User.IsBot, true)
                 .WithCurrentTimestamp();
 
             var embed = builder.Build();
@@ -51,26 +51,26 @@ namespace Brobot.Commands
             }
             else
             {
+                
                 var builder = new EmbedBuilder()
-                   .WithTitle($"User info for {user.Mention} ")
+                   .WithTitle($"<:discord:314003252830011395> User info for {user.Mention} ")
                    .WithThumbnailUrl(user.GetAvatarUrl() ?? user.GetDefaultAvatarUrl())
                    .WithDescription("This is your info")
                    .WithColor(new Color(33, 176, 252))
-                   .WithFields()
                    .AddField("Your 🆔", user.Id)
                    .AddField("Discord Tag 🏷️", user.Discriminator, true)
                    .AddField("Discord Username", user.Username)
                    .AddField("Account Creation Date 🍰", user.CreatedAt.ToString("dd/MM/yyyy"), true)
                    .AddField("Joined At 📥", user.JoinedAt.Value.ToString("dd/MM/yyyy"), true)
                    // .AddField("Roles", string.Join(" ", (Context.User as SocketGuildUser).Roles.Select(x => x.Mention)))
-                   .AddField("Activity 🎽", user.Activity)
-                   .AddField("Status 🟢 🌙 🔴", user.Status)
-                   .AddField("Are you a bot? 🤖", user.IsBot, true)
+                   .AddField("Activity <a:typing:393848431413559296>", user.Activity)
+                   .AddField("Status <:online2:464520569975603200> <:offline2:464520569929334784> <:away2:464520569862357002> <:dnd2:464520569560498197>", user.Status)
+                   .AddField("Are you a bot? <:botTag:230105988211015680>", user.IsBot, true)
                    .WithCurrentTimestamp();
 
                 var embed = builder.Build();
 
-                await Context.Channel.SendMessageAsync(null, false, embed);
+                await Context.Channel.SendMessageAsync(" ", false, embed);
             }
 
         }

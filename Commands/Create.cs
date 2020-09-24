@@ -12,6 +12,7 @@ namespace Brobot.Commands
     public class Create : ModuleBase
     { 
         [Command("create.text")]
+        [RequireUserPermission(ChannelPermission.ManageChannels)]
         public async Task CreateText(string channelname)
         {
             await Context.Guild.CreateTextChannelAsync(channelname);
@@ -19,6 +20,7 @@ namespace Brobot.Commands
         }
 
         [Command("create.voice")]
+        [RequireUserPermission(ChannelPermission.ManageChannels)]
         public async Task CreateVoice(string channelname)
         {
             await Context.Guild.CreateVoiceChannelAsync(channelname);

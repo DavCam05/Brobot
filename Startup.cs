@@ -59,6 +59,7 @@ namespace Brobot
                 }))
                 .AddSingleton<CommandHandler>()
                 .AddSingleton<StartupService>()
+                .AddSingleton<LoggingService>()
                 .AddSingleton(configuration);
         }
     }
