@@ -31,9 +31,9 @@ namespace Brobot.Commands
                 .AddField("Discord Tag 🏷️", Context.User.Discriminator, true)
                 .AddField("Discord Username", Context.User.Username)
                 .AddField("Account Creation Date 🍰", Context.User.CreatedAt.ToString("dd/MM/yyyy"), true)
-                .AddField("Joined At 📥", (Context.User as SocketGuildUser).JoinedAt.Value.ToString("dd/MM/yyyy"), true)
+                .AddField("Joined At 📥", $"{(Context.User as SocketGuildUser).JoinedAt.Value.ToString("dd/MM/yyyy")}.", true)
                // .AddField("Roles", string.Join(" ", (Context.User as SocketGuildUser).Roles.Select(x => x.Mention)))
-                .AddField("Activity <a:typing:393848431413559296>", Context.User.Activity)
+                .AddField("Activity <a:typing:393848431413559296>", $"{Context.User.Activity}.")
                 .AddField("Status <:online2:464520569975603200> <:offline2:464520569929334784> <:away2:464520569862357002> <:dnd2:464520569560498197>", Context.User.Status )
                 .AddField("Are you a bot? <:botTag:230105988211015680>", Context.User.IsBot, true)
                 .WithCurrentTimestamp();
