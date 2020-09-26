@@ -37,7 +37,7 @@ namespace Brobot.Services
 
             int pos = 0;
             //msg.HasStringPrefix(_config["prefix"], ref pos) ||  just for the prefix
-            if (msg.HasMentionPrefix(_discord.CurrentUser, ref pos))
+            if (msg.HasStringPrefix(_config["prefix"], ref pos) || msg.HasMentionPrefix(_discord.CurrentUser, ref pos))
             {
                 var result = await _commands.ExecuteAsync(context, pos, _provider);
 
