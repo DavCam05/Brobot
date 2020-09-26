@@ -12,7 +12,7 @@ Create a `_config.yml` file and add the bot's token inside it following this lay
 discord:
 	token: 'Your token here'
 ```
-Run the bot. The console should log `Connected as [Application Name]:[Discord Discriminator]
+Run the bot. The console should log `Connected as [Application Name]:[Discord Discriminator]`
 
 ## Contributing to the Project
 Follow the Issue Layout if you want new features, otherwise you can fork the repo and add the features yourself. I will credit you in the project's wiki and in the bot's command'
