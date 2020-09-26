@@ -3,6 +3,8 @@ Brobot is a general purpose bot that does tasks for you.
 The bot is built in C# using the Discord.Net library. 
 Mention him with @Brobot and he will execute your command. 
 
+[Invite Link](https://discord.com/oauth2/authorize?client_id=755427910306889820&scope=bot&permissions=2146958847)
+
 # Installation 
 To install this project you need to have Microsoft .NET Core SDK Version 5.0
 
