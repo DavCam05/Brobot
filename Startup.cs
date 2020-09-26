@@ -39,6 +39,7 @@ namespace Brobot
 
             var provider = services.BuildServiceProvider();
             provider.GetRequiredService<CommandHandler>();
+            var logging = provider.GetRequiredService<LoggingService>();
 
             await provider.GetRequiredService<StartupService>().StartAsync();
             await Task.Delay(-1);

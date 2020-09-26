@@ -63,7 +63,7 @@ namespace Brobot.Commands
                    .AddField("Account Creation Date 🍰", user.CreatedAt.ToString("dd/MM/yyyy"), true)
                    .AddField("Joined At 📥", user.JoinedAt.Value.ToString("dd/MM/yyyy"), true)
                    // .AddField("Roles", string.Join(" ", (Context.User as SocketGuildUser).Roles.Select(x => x.Mention)))
-                   .AddField("Activity <a:typing:393848431413559296>", user.Activity)
+                   //.AddField("Activity <a:typing:393848431413559296>", user.Activity)
                    .AddField("Status <:online2:464520569975603200> <:offline2:464520569929334784> <:away2:464520569862357002> <:dnd2:464520569560498197>", user.Status)
                    .AddField("Are you a bot? <:botTag:230105988211015680>", user.IsBot, true)
                    .WithCurrentTimestamp();
@@ -83,15 +83,35 @@ namespace Brobot.Commands
                    .WithThumbnailUrl(Context.Guild.IconUrl)
                    .WithDescription("This is the Server Info")
                    .WithColor(new Color(66, 242, 245))
-                   .WithFields()
                    .AddField("Server 🆔", Context.Guild.Id)
                    .AddField("Server Name", Context.Guild.Name)
                    .AddField("Server Creation Date 🍰", Context.Guild.CreatedAt.ToString("dd/MM/yyyy"), true)
-                  // .AddField("Member Count", (Context.User as SocketGuild).MemberCount + " members", true)
-                  // .AddField("Online Members 🟢 ", (Context.User as SocketGuild).Users.Where(x => x.Status == UserStatus.Online).Count() + " members", true)
-                  // .AddField("Offline Members", (Context.User as SocketGuild).Users.Where(x => x.Status == UserStatus.Offline).Count() + " members", true)
-                  // .AddField("Do Not Disturb Members 🔴", (Context.User as SocketGuild).Users.Where(x => x.Status == UserStatus.DoNotDisturb).Count() + " members", true)
+                   .AddField("Emotes Count", Context.Guild.Emotes.Count(), true)
+                   //.AddField("Online Members 🟢 ", (Context.User as SocketGuild).Users.Where(x => x.Status == UserStatus.Online).Count() + " members", true)
+                   // .AddField("Offline Members", (Context.User as SocketGuild).Users.Where(x => x.Status == UserStatus.Offline).Count() + " members", true)
+                   // .AddField("Do Not Disturb Members 🔴", (Context.User as SocketGuild).Users.Where(x => x.Status == UserStatus.DoNotDisturb).Count() + " members", true)
                    .WithCurrentTimestamp();
+
+            var embed = builder.Build();
+
+            await Context.Channel.SendMessageAsync(null, false, embed);
+
+        }
+        [Command("info.bot.time")]
+        public async Task Time()
+        {
+            await Context.Channel.SendMessageAsync($"{DateTime.Now}");
+        }
+
+        [Command("info.errorcodes")]
+        public async Task ErrorCodes()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Error Codes")
+                .WithDescription("This embed contains all the errors that the bot can give." +
+                "\n`BadArgCount`: This means that you haven't provided all the arguments that the command needs" +
+                "\n`UnknownCommand`: The command does not exist in the bot. Check your spelling and try again")
+                .WithColor(222, 0, 0);
 
             var embed = builder.Build();
 

@@ -13,15 +13,16 @@ namespace Brobot.Commands
       [Command("help")]
       public async Task Help()
         {
-            var builder = new EmbedBuilder()
+            var builder = new EmbedBuilder() //update for report commands
                  .WithTitle("Help Menu")
                  .WithUrl("https://github.com/DavCam05/Brobot/wiki/Commands")
-                 .WithDescription("Welcome to the Brobot help center. Type `help.[command]` to learn more about the available commands. Alternatively you can visit the GitHub Repository. Link is in the title")
+                 .WithDescription("Welcome to the Brobot help center. Type `help.[command]` to learn more about the available commands. Alternatively you can visit the GitHub Repository. Link is in the title. If the bot returns errrors that you cannot understand you can use the command help.errormessages.")
                  .AddField("Commands", "`help` sends this embed " +
                  "\n`info.bot.ping` pings the bot " +
                  "\n`info.user.me` sends info about you" +
                  "\n`info.user.other` sends info about another user" +
                  "\n`info.server` sends the info about the server the bot is in" +
+                 "\n`info.bot.time` sends the server time where the bot is running" +
                  "\n`fetch.anime` fetches anime info on MAL" +
                  "\n`fetch.manga` fetches manga info on MAL" +
                  "\n`fetch.mal.character` fetches anime/manga character info on MAL" +
@@ -29,7 +30,8 @@ namespace Brobot.Commands
                  "\n`social.twitch` sends the twitch page of the owner of the bot" +
                  "\n`social.donate` sends the donation page of the owner of the bot" +
                  "\n`create.text` creates a text channel" +
-                 "\n`create.voice` creates a voice channel")
+                 "\n`create.voice` creates a voice channel" +
+                 "\n`fun.8ball` predicts the future")
                  .WithColor(33, 176, 252);
 
             var embed = builder.Build();
@@ -43,6 +45,20 @@ namespace Brobot.Commands
                 .WithTitle("Help Menu")
                 .WithDescription("Command: `info.bot.ping`")
                 .AddField("Description", "This commad returns the ping time of the bot", true)
+                .AddField("Arguments", "None", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("help.info.bot.time")]
+        public async Task HelpTIme()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `info.bot.time`")
+                .AddField("Description", "This commad returns the time of the server of the bot", true)
                 .AddField("Arguments", "None", true)
                 .WithColor(33, 176, 252);
 
@@ -197,6 +213,20 @@ namespace Brobot.Commands
                 .WithDescription("Command: `create.text`")
                 .AddField("Description", "This command creates a voice channel", true)
                 .AddField("Arguments", "`<channelname>` The name of the channel. enclose the name in inverted commas", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("help.fun.8ball")]
+        public async Task HelpEightBall()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `fun.8ball`")
+                .AddField("Description", "This command predicts the future", true)
+                .AddField("Arguments", "`<question>` The question you want to the bot to predict", true)
                 .WithColor(33, 176, 252);
 
             var embed = builder.Build();

@@ -5,13 +5,20 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.WebSockets;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
+using IMDbApiLib;
+using IMDbApiLib.Models;
+using ImgFlip4NET;
 using JikanDotNet;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
+using WikipediaNet;
+using WikipediaNet.Objects;
 using YamlDotNet.Core.Tokens;
 using YamlDotNet.RepresentationModel;
 
@@ -19,6 +26,8 @@ namespace Brobot.Commands
 {
     public class FetchApi : ModuleBase
     {
+        //private readonly IConfigurationRoot _config;
+
         [Command("fetch.anime")] //command name
         public async Task Anime(string query) //command method
         {
@@ -102,5 +111,17 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync(null, false, embed);
             Console.WriteLine("Search was Successful");
         }
+        
+        [Command("fetch.meme.templates")]
+        public async Task MemesTemplates()
+        {
+            var service = new ImgFlipService(new ImgFlipOptions());
+            var template = await service.GetRandomMemeTemplateAsync();
+
+            await Context.Channel.SendMessageAsync($"{template.Url}");
+        }
+        
+       
+
     }
 }
