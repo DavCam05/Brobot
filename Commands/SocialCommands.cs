@@ -10,7 +10,7 @@ namespace Brobot.Commands
 {
     public class SocialCommands : ModuleBase
     {
-        [Command("social.github")]
+        [Command("github")]
         public async Task GitHub()
         {
             var builder = new EmbedBuilder()
@@ -24,7 +24,7 @@ namespace Brobot.Commands
             
         }
 
-        [Command("social.donate")]
+        [Command("donate")]
         public async Task Donate()
         {
             var builder = new EmbedBuilder()
@@ -38,7 +38,7 @@ namespace Brobot.Commands
 
         }
 
-        [Command("social.twitch")]
+        [Command("twitch")]
         public async Task Twitch()
         {
             var builder = new EmbedBuilder()

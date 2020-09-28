@@ -11,7 +11,7 @@ namespace Brobot.Commands
     {
         private readonly Random random = new Random();
 
-        [Command("fun.8ball")]
+        [Command("8ball")]
         public async Task EightBall(string question)
         {
             int randomNumber = random.Next(1, 20);

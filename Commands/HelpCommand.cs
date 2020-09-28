@@ -18,32 +18,33 @@ namespace Brobot.Commands
                  .WithUrl("https://github.com/DavCam05/Brobot/wiki/Commands")
                  .WithDescription("Welcome to the Brobot help center. Type `help.[command]` to learn more about the available commands. Alternatively you can visit the GitHub Repository. Link is in the title. If the bot returns errrors that you cannot understand you can use the command help.errormessages.")
                  .AddField("Commands", "`help` sends this embed " +
-                 "\n`info.bot.ping` pings the bot " +
-                 "\n`info.user.me` sends info about you" +
-                 "\n`info.user.other` sends info about another user" +
-                 "\n`info.server` sends the info about the server the bot is in" +
-                 "\n`info.bot.time` sends the server time where the bot is running" +
-                 "\n`fetch.anime` fetches anime info on MAL" +
-                 "\n`fetch.manga` fetches manga info on MAL" +
-                 "\n`fetch.mal.character` fetches anime/manga character info on MAL" +
-                 "\n`social.github` sends the github repo of the bot" +
-                 "\n`social.twitch` sends the twitch page of the owner of the bot" +
-                 "\n`social.donate` sends the donation page of the owner of the bot" +
-                 "\n`create.text` creates a text channel" +
-                 "\n`create.voice` creates a voice channel" +
-                 "\n`fun.8ball` predicts the future")
+                 "\n`ping` pings the bot " +
+                 "\n`infome` sends info about you" +
+                 "\n`infoother` sends info about another user" +
+                 "\n`serverinfo` sends the info about the server the bot is in" +
+                 "\n`time` sends the server time where the bot is running" +
+                 "\n`anime` fetches anime info on MAL" +
+                 "\n`manga` fetches manga info on MAL" +
+                 "\n`malcharacter` fetches anime/manga character info on MAL" +
+                 "\n`github` sends the github repo of the bot" +
+                 "\n`twitch` sends the twitch page of the owner of the bot" +
+                 "\n`donate` sends the donation page of the owner of the bot" +
+                 "\n`newtext` creates a text channel" +
+                 "\n`newvoice` creates a voice channel" +
+                 "\n`8ball` predicts the future" +
+                 "\n`memetemplates` fetches some meme templates for you")
                  .WithColor(33, 176, 252);
 
             var embed = builder.Build();
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
 
-        [Command("help.info.bot.ping")]
+        [Command("help.ping")]
         public async Task HelpPing()
         {
             var builder = new EmbedBuilder()
                 .WithTitle("Help Menu")
-                .WithDescription("Command: `info.bot.ping`")
+                .WithDescription("Command: `ping`")
                 .AddField("Description", "This commad returns the ping time of the bot", true)
                 .AddField("Arguments", "None", true)
                 .WithColor(33, 176, 252);
@@ -52,12 +53,26 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
 
-        [Command("help.info.bot.time")]
+        [Command("help.memetemplates")]
+        public async Task HelpMeme()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `memetemplates`")
+                .AddField("Description", "This commad returns random meme templates", true)
+                .AddField("Arguments", "None", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("help.time")]
         public async Task HelpTIme()
         {
             var builder = new EmbedBuilder()
                 .WithTitle("Help Menu")
-                .WithDescription("Command: `info.bot.time`")
+                .WithDescription("Command: `time`")
                 .AddField("Description", "This commad returns the time of the server of the bot", true)
                 .AddField("Arguments", "None", true)
                 .WithColor(33, 176, 252);
@@ -66,12 +81,12 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
 
-        [Command("help.info.user.me")]
+        [Command("help.infome")]
         public async Task HelpMyInfo()
         {
             var builder = new EmbedBuilder()
                 .WithTitle("Help Menu")
-                .WithDescription("Command: `info.user.me`")
+                .WithDescription("Command: `infome`")
                 .AddField("Description", "This commad returns info about you", true)
                 .AddField("Arguments", "None", true)
                 .WithColor(33, 176, 252);
@@ -80,12 +95,12 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
 
-        [Command("help.info.user.other")]
+        [Command("help.infoother")]
         public async Task HelpUserInfo()
         {
             var builder = new EmbedBuilder()
                 .WithTitle("Help Menu")
-                .WithDescription("Command: `info.user.other`")
+                .WithDescription("Command: `infoother`")
                 .AddField("Description", "This command returns info about a specified user", true)
                 .AddField("Arguments", "`<User>` Mention the user that you need info from", true)
                 .WithColor(33, 176, 252);
@@ -94,12 +109,12 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
 
-        [Command("help.info.server")]
+        [Command("help.serverinfo")]
         public async Task HelpServerInfo()
         {
             var builder = new EmbedBuilder()
                 .WithTitle("Help Menu")
-                .WithDescription("Command: `info.server`")
+                .WithDescription("Command: `serverinfo`")
                 .AddField("Description", "This command returns info about the server", true)
                 .AddField("Arguments", "None", true)
                 .WithColor(33, 176, 252);
@@ -108,12 +123,12 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
 
-        [Command("help.fetch.anime")]
+        [Command("help.anime")]
         public async Task HelpFetchAnime()
         {
             var builder = new EmbedBuilder()
                 .WithTitle("Help Menu")
-                .WithDescription("Command: `fetch.anime`")
+                .WithDescription("Command: `anime`")
                 .AddField("Description", "This command returns information about your searched anime. Uses the Jikan.Net Wrapper for MAL", true)
                 .AddField("Arguments", "`<query` This is the search query. Make sure to place it between double inverted commas", true)
                 .WithColor(33, 176, 252);
@@ -122,12 +137,12 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
 
-        [Command("help.fetch.manga")]
+        [Command("help.manga")]
         public async Task HelpFetchManga()
         {
             var builder = new EmbedBuilder()
                 .WithTitle("Help Menu")
-                .WithDescription("Command: `fetch.manga`")
+                .WithDescription("Command: `manga`")
                 .AddField("Description", "This command returns information about your searched manga. Uses the Jikan.Net Wrapper for MAL", true)
                 .AddField("Arguments", "`<query>` This is the search query. Make sure to place it between double inverted commas", true)
                 .WithColor(33, 176, 252);
@@ -136,12 +151,12 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
 
-        [Command("help.fetch.mal.character")]
+        [Command("help.malcharacter")]
         public async Task HelpFetchCharacter()
         {
             var builder = new EmbedBuilder()
                 .WithTitle("Help Menu")
-                .WithDescription("Command: `fetch.mal.character`")
+                .WithDescription("Command: `malcharacter`")
                 .AddField("Description", "This command returns information about your searched character. Uses the Jikan.Net Wrapper for MAL", true)
                 .AddField("Arguments", "`<query>` This is the search query. Make sure to place it between double inverted commas", true)
                 .WithColor(33, 176, 252);
@@ -150,12 +165,12 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
 
-        [Command("help.social.github")]
+        [Command("help.github")]
         public async Task HelpSocialGithub()
         {
             var builder = new EmbedBuilder()
                 .WithTitle("Help Menu")
-                .WithDescription("Command: `social.github`")
+                .WithDescription("Command: `github`")
                 .AddField("Description", "This command returns the github page of the bot", true)
                 .AddField("Arguments", "none", true)
                 .WithColor(33, 176, 252);
@@ -163,12 +178,12 @@ namespace Brobot.Commands
             var embed = builder.Build();
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
-        [Command("help.social.twitch")]
+        [Command("help.twitch")]
         public async Task HelpTwitch()
         {
             var builder = new EmbedBuilder()
                 .WithTitle("Help Menu")
-                .WithDescription("Command: `social.twitch`")
+                .WithDescription("Command: `twitch`")
                 .AddField("Description", "This command returns the twitch page of the owner of the bot", true)
                 .AddField("Arguments", "none", true)
                 .WithColor(33, 176, 252);
@@ -177,12 +192,12 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
 
-        [Command("help.social.donate")]
+        [Command("help.donate")]
         public async Task HelpDonate()
         {
             var builder = new EmbedBuilder()
                 .WithTitle("Help Menu")
-                .WithDescription("Command: `social.donate`")
+                .WithDescription("Command: `donate`")
                 .AddField("Description", "This command returns the donation page of the owner of the bot", true)
                 .AddField("Arguments", "none", true)
                 .WithColor(33, 176, 252);
@@ -191,12 +206,12 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
 
-        [Command("help.create.text")]
+        [Command("help.newtext")]
         public async Task HelpText()
         {
             var builder = new EmbedBuilder()
                 .WithTitle("Help Menu")
-                .WithDescription("Command: `create.text`")
+                .WithDescription("Command: `newtext`")
                 .AddField("Description", "This command creates a text channel", true)
                 .AddField("Arguments", "`<channelname>` The name of the channel. enclose the name in inverted commas", true)
                 .WithColor(33, 176, 252);
@@ -205,12 +220,12 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
 
-        [Command("help.create.voice")]
+        [Command("help.newvoice")]
         public async Task HelpVoice()
         {
             var builder = new EmbedBuilder()
                 .WithTitle("Help Menu")
-                .WithDescription("Command: `create.text`")
+                .WithDescription("Command: `newvoice`")
                 .AddField("Description", "This command creates a voice channel", true)
                 .AddField("Arguments", "`<channelname>` The name of the channel. enclose the name in inverted commas", true)
                 .WithColor(33, 176, 252);
@@ -219,12 +234,12 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
 
-        [Command("help.fun.8ball")]
+        [Command("help.8ball")]
         public async Task HelpEightBall()
         {
             var builder = new EmbedBuilder()
                 .WithTitle("Help Menu")
-                .WithDescription("Command: `fun.8ball`")
+                .WithDescription("Command: `8ball`")
                 .AddField("Description", "This command predicts the future", true)
                 .AddField("Arguments", "`<question>` The question you want to the bot to predict", true)
                 .WithColor(33, 176, 252);

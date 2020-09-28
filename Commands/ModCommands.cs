@@ -12,7 +12,7 @@ namespace Brobot.Commands
 {
     public class ModCommands : ModuleBase
     {
-        [Command("mod.report.user")]
+        [Command("report")]
         public async Task ReportUser(SocketGuildUser user = null) //still needs fixing
         {
             if(user == null)

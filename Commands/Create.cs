@@ -11,7 +11,7 @@ namespace Brobot.Commands
 {
     public class Create : ModuleBase
     { 
-        [Command("create.text")]
+        [Command("newtext")]
         [RequireUserPermission(ChannelPermission.ManageChannels)]
         public async Task CreateText(string channelname)
         {
@@ -19,7 +19,7 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync("Channel has been created. You can now add permissions and move it in your chosen category. The channel is at the top of the left sidebar");
         }
 
-        [Command("create.voice")]
+        [Command("newvoice")]
         [RequireUserPermission(ChannelPermission.ManageChannels)]
         public async Task CreateVoice(string channelname)
         {

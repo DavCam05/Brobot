@@ -49,7 +49,7 @@ namespace Brobot.Services
                     Console.WriteLine(result);
 
                     await context.Channel.SendMessageAsync($"There has been an error in executing your command. Here's the error: \n ```{result}``` \n Please contact TheDeveloper#2860 if you encounter further problems." +
-                        $"\n Run `@Brobot info.errorcodes` for error definitions");
+                        $"\n Run `bro!errorcodes` for error definitions");
 
                     
                 }

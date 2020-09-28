@@ -28,7 +28,7 @@ namespace Brobot.Commands
     {
         //private readonly IConfigurationRoot _config;
 
-        [Command("fetch.anime")] //command name
+        [Command("anime")] //command name
         public async Task Anime(string query) //command method
         {
             Console.WriteLine("Search query: " + query);
@@ -59,7 +59,7 @@ namespace Brobot.Commands
             Console.WriteLine("Search was Successful");
         }
 
-        [Command("fetch.manga")]
+        [Command("manga")]
         public async Task Manga(string query)
         {
             Console.WriteLine("Search query: " + query);
@@ -90,7 +90,7 @@ namespace Brobot.Commands
             Console.WriteLine("Search was Successful");
         }
 
-        [Command("fetch.mal.character")]
+        [Command("malcharacter")]
         public async Task MangaCharacter(string query)
         {
             Console.WriteLine("Search query: " + query);
@@ -112,7 +112,7 @@ namespace Brobot.Commands
             Console.WriteLine("Search was Successful");
         }
         
-        [Command("fetch.meme.templates")]
+        [Command("memetemplates")]
         public async Task MemesTemplates()
         {
             var service = new ImgFlipService(new ImgFlipOptions());

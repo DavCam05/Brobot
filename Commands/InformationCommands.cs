@@ -12,13 +12,13 @@ namespace Brobot.Commands
 {
     public class InformationCommands : ModuleBase
     {
-        [Command("info.bot.ping")]
+        [Command("ping")]
         public async Task Ping()
         {
             await Context.Channel.SendMessageAsync($"Pong :ping_pong: \nThat took: {(Context.Client as DiscordSocketClient).Latency}ms");
         }
 
-        [Command("info.user.me")]
+        [Command("infome")]
         public async Task UserInfo()
         {
             var builder = new EmbedBuilder()
@@ -42,7 +42,7 @@ namespace Brobot.Commands
 
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
-        [Command("info.user.other")]
+        [Command("infoother")]
         public async Task OtherUserInfo(SocketGuildUser user = null)
         {
             if (user == null)
@@ -75,7 +75,7 @@ namespace Brobot.Commands
 
         }
 
-        [Command("info.server")]
+        [Command("serverinfo")]
         public async Task ServerInfo()
         {
             var builder = new EmbedBuilder()
@@ -97,13 +97,13 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync(null, false, embed);
 
         }
-        [Command("info.bot.time")]
+        [Command("time")]
         public async Task Time()
         {
             await Context.Channel.SendMessageAsync($"{DateTime.Now}");
         }
 
-        [Command("info.errorcodes")]
+        [Command("errorcodes")]
         public async Task ErrorCodes()
         {
             var builder = new EmbedBuilder()
