@@ -43,15 +43,15 @@ namespace Brobot.Commands
                 .WithDescription(result.Results.First().Description)
                 .WithImageUrl(result.Results.First().ImageURL)
                 .AddField("MyAnimeList 🆔", result.Results.First().MalId, true)
-                .AddField("Age Rating 🔞", $"{ result.Results.First().Rated} ", true)
-                .AddField("Episode Count 🎞️", $"{result.Results.First().Episodes} ", true)
-                .AddField("Start Date 📅", $"{result.Results.First().StartDate} ", true)
-                .AddField("Airing? 📺", $"{result.Results.First().Airing} ", true)
-                .AddField("End Date 📅", $"{result.Results.First().EndDate} ", true)
-                .AddField("Score ⭐", $"{result.Results.First().Score}", true)
-                .AddField("Type 📽️", $"{result.Results.First().Type}", true)          
+                .AddField("Age Rating 🔞", $"{ result.Results.First().Rated}. ", true)
+                .AddField("Episode Count 🎞️", $"{result.Results.First().Episodes}. ", true)
+                .AddField("Start Date 📅", $"{result.Results.First().StartDate}. ", true)
+                .AddField("Airing? 📺", $"{result.Results.First().Airing}. ", true)
+                .AddField("End Date 📅", $"{result.Results.First().EndDate}. ", true)
+                .AddField("Score ⭐", $"{result.Results.First().Score}.", true)
+                .AddField("Type 📽️", $"{result.Results.First().Type}.", true)          
                 .AddField("Anime Members count on MAL 🧑🏻‍🤝‍🧑🏽", $"{result.Results.First().Members}.", true)
-                .WithFooter($"{result.Results.First().URL} ")
+                .WithFooter($"{result.Results.First().URL}. ")
                 .WithColor(242, 145, 0);
 
             var embed = builder.Build();
@@ -74,15 +74,15 @@ namespace Brobot.Commands
                 .WithDescription(result.Results.First().Description)
                 .WithImageUrl(result.Results.First().ImageURL)
                 .AddField("MyAnimeList 🆔", result.Results.First().MalId, true)
-                .AddField("Chapter 📘", $"{result.Results.First().Chapters} ", true)
-                .AddField("Volumes 📗", $"{result.Results.First().Volumes} ", true)
-                .AddField("Start Date 📅",$"{result.Results.First().StartDate} ", true)
-                .AddField("Publishing? 📚", $"{result.Results.First().Publishing} ", true)
-                .AddField("End Date 📅", $"{result.Results.First().EndDate} ", true)
-                .AddField("Score ⭐", $"{result.Results.First().Score} ", true)
-                .AddField("Type 📖 ️", $"{result.Results.First().Type} ", true)
-                .AddField("Manga Members count on MAL 🧑🏻‍🤝‍🧑🏽", $"{result.Results.First().Members} ", true)
-                .WithFooter($"{result.Results.First().URL} ")
+                .AddField("Chapter 📘", $"{result.Results.First().Chapters}. ", true)
+                .AddField("Volumes 📗", $"{result.Results.First().Volumes}.", true)
+                .AddField("Start Date 📅",$"{result.Results.First().StartDate}. ", true)
+                .AddField("Publishing? 📚", $"{result.Results.First().Publishing}. ", true)
+                .AddField("End Date 📅", $"{result.Results.First().EndDate}. ", true)
+                .AddField("Score ⭐", $"{result.Results.First().Score}. ", true)
+                .AddField("Type 📖 ️", $"{result.Results.First().Type}. ", true)
+                .AddField("Manga Members count on MAL 🧑🏻‍🤝‍🧑🏽", $"{result.Results.First().Members}. ", true)
+                .WithFooter($"{result.Results.First().URL}. ")
                 .WithColor(157, 252, 3);
             
             var embed = builder.Build();
@@ -102,9 +102,9 @@ namespace Brobot.Commands
 
             var builder = new EmbedBuilder()
                 .WithTitle(result.Results.First().Name)
-                .WithImageUrl($"{result.Results.First().ImageURL}")
+                .WithImageUrl(result.Results.First().ImageURL)
                 .AddField("MyAnimeList 🆔", result.Results.First().MalId, true)
-                .WithFooter($"{result.Results.First().URL} ")
+                .WithFooter($"{result.Results.First().URL}. ")
                 .WithColor(245, 120, 66);
             
             var embed = builder.Build();
