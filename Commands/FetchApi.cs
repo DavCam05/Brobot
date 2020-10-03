@@ -16,17 +16,20 @@ using ImgFlip4NET;
 using JikanDotNet;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NewsAPI;
+using NewsAPI.Constants;
+using NewsAPI.Models;
 using Newtonsoft.Json;
 using WikipediaNet;
 using WikipediaNet.Objects;
 using YamlDotNet.Core.Tokens;
 using YamlDotNet.RepresentationModel;
 
-namespace Brobot.Commands   
+namespace Brobot.Commands
 {
     public class FetchApi : ModuleBase
     {
-        //private readonly IConfigurationRoot _config;
+        private readonly IConfigurationRoot _config;
 
         [Command("anime")] //command name
         public async Task Anime(string query) //command method
@@ -49,7 +52,7 @@ namespace Brobot.Commands
                 .AddField("Airing? 📺", $"{result.Results.First().Airing}. ", true)
                 .AddField("End Date 📅", $"{result.Results.First().EndDate}. ", true)
                 .AddField("Score ⭐", $"{result.Results.First().Score}.", true)
-                .AddField("Type 📽️", $"{result.Results.First().Type}.", true)          
+                .AddField("Type 📽️", $"{result.Results.First().Type}.", true)
                 .AddField("Anime Members count on MAL 🧑🏻‍🤝‍🧑🏽", $"{result.Results.First().Members}.", true)
                 .WithFooter($"{result.Results.First().URL}. ")
                 .WithColor(242, 145, 0);
@@ -76,7 +79,7 @@ namespace Brobot.Commands
                 .AddField("MyAnimeList 🆔", result.Results.First().MalId, true)
                 .AddField("Chapter 📘", $"{result.Results.First().Chapters}. ", true)
                 .AddField("Volumes 📗", $"{result.Results.First().Volumes}.", true)
-                .AddField("Start Date 📅",$"{result.Results.First().StartDate}. ", true)
+                .AddField("Start Date 📅", $"{result.Results.First().StartDate}. ", true)
                 .AddField("Publishing? 📚", $"{result.Results.First().Publishing}. ", true)
                 .AddField("End Date 📅", $"{result.Results.First().EndDate}. ", true)
                 .AddField("Score ⭐", $"{result.Results.First().Score}. ", true)
@@ -84,7 +87,7 @@ namespace Brobot.Commands
                 .AddField("Manga Members count on MAL 🧑🏻‍🤝‍🧑🏽", $"{result.Results.First().Members}. ", true)
                 .WithFooter($"{result.Results.First().URL}. ")
                 .WithColor(157, 252, 3);
-            
+
             var embed = builder.Build();
             await Context.Channel.SendMessageAsync(null, false, embed);
             Console.WriteLine("Search was Successful");
@@ -106,12 +109,12 @@ namespace Brobot.Commands
                 .AddField("MyAnimeList 🆔", result.Results.First().MalId, true)
                 .WithFooter($"{result.Results.First().URL}. ")
                 .WithColor(245, 120, 66);
-            
+
             var embed = builder.Build();
             await Context.Channel.SendMessageAsync(null, false, embed);
             Console.WriteLine("Search was Successful");
         }
-        
+
         [Command("memetemplates")]
         public async Task MemesTemplates()
         {
@@ -120,8 +123,40 @@ namespace Brobot.Commands
 
             await Context.Channel.SendMessageAsync($"{template.Url}");
         }
-        
-       
 
+        [Command("news")]
+        public async Task FetchNews(string query)
+        {
+            var newsApiClient = new NewsApiClient("API KEY GOES HERE");
+            var articlesResponse = newsApiClient.GetEverything(new EverythingRequest
+            {
+                Q = query,
+                SortBy = SortBys.Popularity,
+                Language = Languages.EN
+            });
+
+            if (articlesResponse.Status == Statuses.Ok)
+            {
+                await Context.Channel.SendMessageAsync($"Results Found: {articlesResponse.TotalResults}");
+                // total results found
+                Console.WriteLine(articlesResponse.TotalResults);
+                // here's the first 20
+                foreach (var article in articlesResponse.Articles)
+                {
+                   
+                    var builder = new EmbedBuilder()
+                        .WithTitle($"{article.Title}.")
+                        .WithUrl($"{article.Url}")
+                        .WithDescription($"{article.Description}.")
+                        .AddField("Author", $"{article.Author}.")
+                        .WithImageUrl($"{article.Url}.")
+                        .WithFooter($"{article.PublishedAt}.");
+
+                    var embed = builder.Build();
+                    await Context.Channel.SendMessageAsync(null, false, embed);
+                }
+            }
+        }
     }
 }
+

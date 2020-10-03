@@ -29,7 +29,6 @@ namespace Brobot.Services
         public async Task StartAsync()
         {
             string token = _config["token:discord"];
-            string imdbkey = _config["token:imdb"];
             if (string.IsNullOrEmpty(token))
             {
                 Console.WriteLine("Provide the Discord token in _config.yml. If the file is not present, make it!");
