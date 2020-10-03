@@ -32,7 +32,8 @@ namespace Brobot.Commands
                  "\n`newtext` creates a text channel" +
                  "\n`newvoice` creates a voice channel" +
                  "\n`8ball` predicts the future" +
-                 "\n`memetemplates` fetches some meme templates for you")
+                 "\n`memetemplates` fetches some meme templates for you" +
+                 "\n`news` fetches the latest news on a topic specified")
                  .WithColor(33, 176, 252);
 
             var embed = builder.Build();
@@ -242,6 +243,19 @@ namespace Brobot.Commands
                 .WithDescription("Command: `8ball`")
                 .AddField("Description", "This command predicts the future", true)
                 .AddField("Arguments", "`<question>` The question you want to the bot to predict", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+        [Command("help.news")]
+        public async Task HelpNews()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `news`")
+                .AddField("Description", "This command fetches the lates news on `newsapi.org`", true)
+                .AddField("Arguments", "`<query>` The search query. This wll be used to return the latest results that match the query", true)
                 .WithColor(33, 176, 252);
 
             var embed = builder.Build();
