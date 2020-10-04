@@ -82,5 +82,10 @@ namespace Brobot.Commands
 
             }
         }
+        [Command("eval")]
+        public async Task EvalEastereEgg()
+        {
+            await Context.Channel.SendMessageAsync("I have just `rm -rf /` your brain");
+        }
     }
 }

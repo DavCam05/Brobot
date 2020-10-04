@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -78,6 +79,14 @@ namespace Brobot.Commands
         [Command("serverinfo")]
         public async Task ServerInfo()
         {
+            var count = await Context.Guild.GetUsersAsync();
+            var users = count.Count();
+
+            var onlineUsers = count.Where(x => x.Status == UserStatus.Online).Count();
+            var offlineUsers = count.Where(x => x.Status == UserStatus.Offline).Count();
+            var dndUsers = count.Where(x => x.Status == UserStatus.DoNotDisturb).Count();
+            var idleUsers = count.Where(x => x.Status == UserStatus.Idle).Count();
+
             var builder = new EmbedBuilder()
                    .WithTitle($"Server Info for {Context.Guild.Name} ")
                    .WithThumbnailUrl(Context.Guild.IconUrl)
@@ -87,9 +96,11 @@ namespace Brobot.Commands
                    .AddField("Server Name", Context.Guild.Name)
                    .AddField("Server Creation Date 🍰", Context.Guild.CreatedAt.ToString("dd/MM/yyyy"), true)
                    .AddField("Emotes Count", Context.Guild.Emotes.Count(), true)
-                   //.AddField("Online Members 🟢 ", (Context.User as SocketGuild).Users.Where(x => x.Status == UserStatus.Online).Count() + " members", true)
-                   // .AddField("Offline Members", (Context.User as SocketGuild).Users.Where(x => x.Status == UserStatus.Offline).Count() + " members", true)
-                   // .AddField("Do Not Disturb Members 🔴", (Context.User as SocketGuild).Users.Where(x => x.Status == UserStatus.DoNotDisturb).Count() + " members", true)
+                   .AddField("Member Count", $"{users} users are in this server", true )
+                   .AddField("Online Members <:online2:464520569975603200> ", $"{onlineUsers} users are online", true)
+                   .AddField("Offline Members <:offline2:464520569929334784>", $"{offlineUsers} users are offline", true)
+                   .AddField("Do Not Disturb Members <:dnd2:464520569560498197> ",  $"{dndUsers} users are on Do Not Disturb", true)
+                   .AddField("Idle Members <:away2:464520569862357002> ", $"{idleUsers} users are idle", true)
                    .WithCurrentTimestamp();
 
             var embed = builder.Build();
