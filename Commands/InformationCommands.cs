@@ -19,6 +19,18 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync($"Pong :ping_pong: \nThat took: {(Context.Client as DiscordSocketClient).Latency}ms");
         }
 
+        [Command("infobot")]
+        public async Task InfoBot()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Brobot#0605")
+                .WithDescription("Brobot is a general purpose bot that does tasks for you!")
+                .AddField("Help Center", "to get to the help center you need to use `bro!help`")
+                .AddField("Prefix", "Brobot takes 2 prefixes: `bro!` or it's mention")
+                .AddField("Developer", "The developer of the bot is TheDeveloper#2860")
+                .AddField("Version", "1.2.0");
+        }
+
         [Command("infome")]
         public async Task UserInfo()
         {

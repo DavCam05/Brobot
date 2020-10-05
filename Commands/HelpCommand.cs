@@ -21,6 +21,7 @@ namespace Brobot.Commands
                  "\n`ping` pings the bot " +
                  "\n`infome` sends info about you" +
                  "\n`infoother` sends info about another user" +
+                 "\n`infobot` sends information about the bot" +
                  "\n`serverinfo` sends the info about the server the bot is in" +
                  "\n`time` sends the server time where the bot is running" +
                  "\n`anime` fetches anime info on MAL" +
@@ -33,7 +34,8 @@ namespace Brobot.Commands
                  "\n`newvoice` creates a voice channel" +
                  "\n`8ball` predicts the future" +
                  "\n`memetemplates` fetches some meme templates for you" +
-                 "\n`news` fetches the latest news on a topic specified")
+                 "\n`news` fetches the latest news on a topic specified" +
+                 "\n`calculator` the help menu for the calculator")
                  .WithColor(33, 176, 252);
 
             var embed = builder.Build();
@@ -89,6 +91,19 @@ namespace Brobot.Commands
                 .WithTitle("Help Menu")
                 .WithDescription("Command: `infome`")
                 .AddField("Description", "This commad returns info about you", true)
+                .AddField("Arguments", "None", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+        [Command("help.infobot")]
+        public async Task HelpbotInfo()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `infobot`")
+                .AddField("Description", "This commad returns info about the bot", true)
                 .AddField("Arguments", "None", true)
                 .WithColor(33, 176, 252);
 
@@ -256,6 +271,19 @@ namespace Brobot.Commands
                 .WithDescription("Command: `news`")
                 .AddField("Description", "This command fetches the lates news on `newsapi.org`", true)
                 .AddField("Arguments", "`<query>` The search query. This wll be used to return the latest results that match the query", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+        [Command("help.calculator")]
+        public async Task HelpCalculator()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `calculator`")
+                .AddField("Description", "This command is a help menu for the calculator", true)
+                .AddField("Arguments", "none", true)
                 .WithColor(33, 176, 252);
 
             var embed = builder.Build();

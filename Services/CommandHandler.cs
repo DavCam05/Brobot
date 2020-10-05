@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
+using Victoria;
 
 namespace Brobot.Services
 {
@@ -15,6 +16,7 @@ namespace Brobot.Services
         public static DiscordSocketClient _discord;
         public static CommandService _commands;
         public static IConfigurationRoot _config;
+
 
         public CommandHandler(DiscordSocketClient discord, CommandService commands, IConfigurationRoot config, IServiceProvider provider)
         {

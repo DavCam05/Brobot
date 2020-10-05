@@ -9,6 +9,7 @@ using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Brobot.Services;
+using Victoria;
 
 namespace Brobot
 {

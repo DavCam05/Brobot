@@ -87,5 +87,6 @@ namespace Brobot.Commands
         {
             await Context.Channel.SendMessageAsync("I have just `rm -rf /` your brain");
         }
+
     }
 }
