@@ -16,7 +16,16 @@ namespace Brobot.Commands
         [Command("ping")]
         public async Task Ping()
         {
-            await Context.Channel.SendMessageAsync($"Pong :ping_pong: \nThat took: {(Context.Client as DiscordSocketClient).Latency}ms");
+            var builder = new EmbedBuilder()
+                .WithTitle("Ping Time")
+                .WithDescription("The Ping time of the bot!")
+                .AddField("Latency", $"```{(Context.Client as DiscordSocketClient).Latency}```", true)
+                .AddField("Shard", $"```{(Context.Client as DiscordSocketClient).ShardId}```", true)
+                .AddField("Connection State", $"```{(Context.Client as DiscordSocketClient).ConnectionState}```", true)
+                .WithColor(3, 252, 28);
+            var embed = builder.Build();
+
+            await Context.Channel.SendMessageAsync(":ping_pong:", false, embed);
         }
 
         [Command("infobot")]
@@ -29,6 +38,9 @@ namespace Brobot.Commands
                 .AddField("Prefix", "Brobot takes 2 prefixes: `bro!` or it's mention")
                 .AddField("Developer", "The developer of the bot is TheDeveloper#2860")
                 .AddField("Version", "1.2.0");
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
         }
 
         [Command("infome")]

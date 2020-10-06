@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
@@ -50,8 +51,16 @@ namespace Brobot.Services
                     Console.WriteLine(reason);
                     Console.WriteLine(result);
 
-                    await context.Channel.SendMessageAsync($"There has been an error in executing your command. Here's the error: \n ```{result}``` \n Please contact TheDeveloper#2860 if you encounter further problems." +
-                        $"\n Run `bro!errorcodes` for error definitions");
+                    var builder = new EmbedBuilder()
+                        .WithTitle("Error")
+                        .WithDescription("There has been an error in executing your command. If you encounter further problems please run the command `bro!github`. Error definitions are here: `bro!errorcodes`")
+                        .AddField("Error:", $"```Error: {result}```")
+                        .WithColor(252, 3, 3)
+                        .WithCurrentTimestamp();
+
+                    var embed = builder.Build();
+
+                  await context.Channel.SendMessageAsync(null, false, embed);
 
                     
                 }
