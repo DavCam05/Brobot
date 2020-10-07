@@ -24,6 +24,7 @@ namespace Brobot.Commands
                  "\n`infobot` sends information about the bot" +
                  "\n`serverinfo` sends the info about the server the bot is in" +
                  "\n`time` sends the server time where the bot is running" +
+                 "\n`invite` Invite for the bot" +
                  "\n`anime` fetches anime info on MAL" +
                  "\n`manga` fetches manga info on MAL" +
                  "\n`malcharacter` fetches anime/manga character info on MAL" +
@@ -283,6 +284,19 @@ namespace Brobot.Commands
                 .WithTitle("Help Menu")
                 .WithDescription("Command: `calculator`")
                 .AddField("Description", "This command is a help menu for the calculator", true)
+                .AddField("Arguments", "none", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+        [Command("help.invite")]
+        public async Task HelpInvite()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `invite`")
+                .AddField("Description", "This command sends the invite link for the bot", true)
                 .AddField("Arguments", "none", true)
                 .WithColor(33, 176, 252);
 

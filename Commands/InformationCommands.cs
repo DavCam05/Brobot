@@ -152,5 +152,16 @@ namespace Brobot.Commands
 
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
+        [Command("invite")]
+        public async Task Invite()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Bot Invite Link")
+                .WithDescription("Click the link below to invite the bot to your server!")
+                .AddField("Invite Link", "https://discord.com/oauth2/authorize?client_id=755427910306889820&scope=bot&permissions=2146958839");
+            var embed = builder.Build();
+
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
     }
 }
