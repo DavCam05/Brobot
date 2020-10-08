@@ -20,6 +20,8 @@ using NewsAPI;
 using NewsAPI.Constants;
 using NewsAPI.Models;
 using Newtonsoft.Json;
+using RestSharp;
+using RestSharp.Extensions;
 using WikipediaNet;
 using WikipediaNet.Objects;
 using YamlDotNet.Core.Tokens;
@@ -35,7 +37,7 @@ namespace Brobot.Commands
         {
             Console.WriteLine("Search query: " + query);
 
-                IJikan jikan = new Jikan();
+            IJikan jikan = new Jikan();
 
             var services = new ServiceCollection().AddSingleton<IJikan, Jikan>().BuildServiceProvider();
 
@@ -77,14 +79,14 @@ namespace Brobot.Commands
         public async Task Manga(string query)
         {
             Console.WriteLine("Search query: " + query);
-                if (string.IsNullOrEmpty(query))
-                {
-                    await Context.Channel.SendMessageAsync("Search Failed." +
-                        "\n No query was specified");
+            if (string.IsNullOrEmpty(query))
+            {
+                await Context.Channel.SendMessageAsync("Search Failed." +
+                    "\n No query was specified");
 
                 return;
-                }
-                IJikan jikan = new Jikan();
+            }
+            IJikan jikan = new Jikan();
 
             var services = new ServiceCollection().AddSingleton<IJikan, Jikan>().BuildServiceProvider();
 
@@ -172,20 +174,93 @@ namespace Brobot.Commands
                 // here's the first 20
                 foreach (var article in articlesResponse.Articles)
                 {
-                   
+
                     var builder = new EmbedBuilder()
                         .WithTitle($"{article.Title}.")
                         .WithUrl($"{article.Url}")
                         .WithDescription($"{article.Description}.")
                         .AddField("Author", $"{article.Author}.")
                         .WithImageUrl($"{article.Url}.")
-                        .WithFooter($"{article.PublishedAt}.");
+                        .WithFooter($"{article.PublishedAt}.")
+                        .WithColor(11, 3, 252);
 
                     var embed = builder.Build();
                     await Context.Channel.SendMessageAsync(null, false, embed);
                 }
             }
         }
+
+        [Command("moviesearch")]
+        public async Task IMDbSearch(string query)
+        {
+            var apiLib = new ApiLib("API KEY GOES HERE");
+
+            // Search
+            var data = await apiLib.SearchMovieAsync(query);
+
+
+            var builder = new EmbedBuilder()
+                .WithTitle(data.Results.First().Title)
+                .WithDescription("Due to limitations on the API, please copy the id and run `bro!IMDb [ID]`")
+                .WithImageUrl(data.Results.First().Image)
+                .AddField("ID", data.Results.First().Id)
+                .WithColor(244, 252, 3);
+
+            var embed = builder.Build();
+
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("IMDb")]
+        public async Task IMDbMovie(string id)
+        {
+
+            var apiLib = new ApiLib("API KEY GOES HERE");
+
+            // Search
+            var data = await apiLib.TitleAsync(id);
+
+
+            var builder = new EmbedBuilder()
+                .WithTitle(data.Title)
+                .WithDescription(data.Plot + ".")
+                .WithImageUrl(data.Image)
+                .AddField("Year", data.Year + ".")
+                .AddField("Awards", data.Awards + ".")
+                .AddField("Rating", data.IMDbRating + ".")
+                .AddField("Writers", data.Writers + ".")
+                .AddField("Duration", data.RuntimeMins + ".")
+                .AddField("Genres", data.Genres + ".")
+                .AddField("Age Rating", data.ContentRating + ".")
+                .WithColor(244, 252, 3);
+
+            var embed = builder.Build();
+
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("tvsearch")]
+        public async Task IMDbTVSearch(string query)
+        {
+            var apiLib = new ApiLib("API KEY GOES HERE"); 
+
+            // Search
+            var data = await apiLib.SearchSeriesAsync(query);
+
+
+            var builder = new EmbedBuilder()
+                .WithTitle(data.Results.First().Title)
+                .WithDescription("Due to limitations on the API, please copy the id and run `bro!IMDb [ID]`")
+                .WithImageUrl(data.Results.First().Image)
+                .AddField("ID", data.Results.First().Id)
+                .WithColor(244, 252, 3);
+
+            var embed = builder.Build();
+
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+
     }
 }
 
