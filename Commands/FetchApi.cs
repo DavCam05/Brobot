@@ -32,6 +32,12 @@ namespace Brobot.Commands
 {
     public class FetchApi : ModuleBase
     {
+        public static IConfigurationRoot _config;
+        public FetchApi(IConfigurationRoot config)
+        {
+            _config = config;
+
+        }
 
         [Command("anime")] //command name
         public async Task Anime(string query) //command method
@@ -159,12 +165,13 @@ namespace Brobot.Commands
         [Command("news")]
         public async Task FetchNews(string query)
         {
-            var newsApiClient = new NewsApiClient("API KEY GOES HERE");
-            var articlesResponse = newsApiClient.GetEverything(new EverythingRequest
+            var apikey = _config["newskey"].ToString();
+            var newsApiClient = new NewsApiClient($"{apikey}");
+            var articlesResponse = newsApiClient.GetTopHeadlines(new TopHeadlinesRequest
             {
                 Q = query,
-                SortBy = SortBys.Popularity,
-                Language = Languages.EN
+                Language = Languages.EN,
+                PageSize = 4
             });
 
             if (articlesResponse.Status == Statuses.Ok)
@@ -194,10 +201,11 @@ namespace Brobot.Commands
         [Command("imdb")]
         public async Task IMDbFilmSearch(string movie)
         {
+            var apikey = _config["imdbkey"].ToString();
             var client = new RestClient($"https://imdb-internet-movie-database-unofficial.p.rapidapi.com/film/{movie}");
             var request = new RestRequest(Method.GET);
             request.AddHeader("x-rapidapi-host", "imdb-internet-movie-database-unofficial.p.rapidapi.com");
-            request.AddHeader("x-rapidapi-key", "API KEY GOES HERE");
+            request.AddHeader("x-rapidapi-key", $"{apikey}");
             IRestResponse response = client.Execute(request);
 
             Root result = JsonConvert.DeserializeObject<Root>(response.Content);
