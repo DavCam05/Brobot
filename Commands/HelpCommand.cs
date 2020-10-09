@@ -37,9 +37,7 @@ namespace Brobot.Commands
                  "\n`memetemplates` fetches some meme templates for you" +
                  "\n`news` fetches the latest news on a topic specified" +
                  "\n`calculator` the help menu for the calculator" +
-                 "\n`IMDb` searches movies from IMDb, needs a movie ID" +
-                 "\n`tvsearch` returns a movie ID for the searched tv show." +
-                 "\n`moviesearch` returns a movie ID for the searched movie.")
+                 "\n`imdb` searches movies from IMDb, needs a movie ID")
                  .WithColor(33, 176, 252);
 
             var embed = builder.Build();
@@ -307,14 +305,14 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
 
-        [Command("help.IMDb")]
+        [Command("help.imdb")]
         public async Task HelpIMDb()
         {
             var builder = new EmbedBuilder()
                 .WithTitle("Help Menu")
-                .WithDescription("Command: `IMDb`")
+                .WithDescription("Command: `imdb`")
                 .AddField("Description", "This command returns movie/tv show information", true)
-                .AddField("Arguments", "<ID> The ID of the movie", true)
+                .AddField("Arguments", "`<movie>` The title of the movie \n OPTIONAL: `<id>` The IMDb Id of the movie", true)
                 .WithColor(33, 176, 252);
 
             var embed = builder.Build();

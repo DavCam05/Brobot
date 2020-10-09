@@ -26,6 +26,7 @@ using WikipediaNet;
 using WikipediaNet.Objects;
 using YamlDotNet.Core.Tokens;
 using YamlDotNet.RepresentationModel;
+using static Brobot.Models.IMDbSearchResult;
 
 namespace Brobot.Commands
 {
@@ -190,75 +191,33 @@ namespace Brobot.Commands
             }
         }
 
-        [Command("moviesearch")]
-        public async Task IMDbSearch(string query)
+        [Command("imdb")]
+        public async Task IMDbFilmSearch(string movie)
         {
-            var apiLib = new ApiLib("API KEY GOES HERE");
+            var client = new RestClient($"https://imdb-internet-movie-database-unofficial.p.rapidapi.com/film/{movie}");
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("x-rapidapi-host", "imdb-internet-movie-database-unofficial.p.rapidapi.com");
+            request.AddHeader("x-rapidapi-key", "API KEY GOES HERE");
+            IRestResponse response = client.Execute(request);
 
-            // Search
-            var data = await apiLib.SearchMovieAsync(query);
+            Root result = JsonConvert.DeserializeObject<Root>(response.Content);
 
-
-            var builder = new EmbedBuilder()
-                .WithTitle(data.Results.First().Title)
-                .WithDescription("Due to limitations on the API, please copy the id and run `bro!IMDb [ID]`")
-                .WithImageUrl(data.Results.First().Image)
-                .AddField("ID", data.Results.First().Id)
-                .WithColor(244, 252, 3);
+            var builder = new EmbedBuilder() // add emojis to the embed
+                .WithTitle($"{result.title}")
+                .WithDescription($"{result.plot}.")
+                .WithImageUrl($"{result.poster}")
+                .AddField("Rating", $"{result.rating}.", true)
+                .AddField("Year", $"{result.year}.", true)
+                .AddField("Lenght", $"{result.length}.", true)
+                .AddField("IMDb ID", $"{result.id}", true)
+                .WithColor(235, 229, 52)
+                .WithFooter("From IMDb");
 
             var embed = builder.Build();
-
             await Context.Channel.SendMessageAsync(null, false, embed);
+
         }
 
-        [Command("IMDb")]
-        public async Task IMDbMovie(string id)
-        {
-
-            var apiLib = new ApiLib("API KEY GOES HERE");
-
-            // Search
-            var data = await apiLib.TitleAsync(id);
-
-
-            var builder = new EmbedBuilder()
-                .WithTitle(data.Title)
-                .WithDescription(data.Plot + ".")
-                .WithImageUrl(data.Image)
-                .AddField("Year", data.Year + ".")
-                .AddField("Awards", data.Awards + ".")
-                .AddField("Rating", data.IMDbRating + ".")
-                .AddField("Writers", data.Writers + ".")
-                .AddField("Duration", data.RuntimeMins + ".")
-                .AddField("Genres", data.Genres + ".")
-                .AddField("Age Rating", data.ContentRating + ".")
-                .WithColor(244, 252, 3);
-
-            var embed = builder.Build();
-
-            await Context.Channel.SendMessageAsync(null, false, embed);
-        }
-
-        [Command("tvsearch")]
-        public async Task IMDbTVSearch(string query)
-        {
-            var apiLib = new ApiLib("API KEY GOES HERE"); 
-
-            // Search
-            var data = await apiLib.SearchSeriesAsync(query);
-
-
-            var builder = new EmbedBuilder()
-                .WithTitle(data.Results.First().Title)
-                .WithDescription("Due to limitations on the API, please copy the id and run `bro!IMDb [ID]`")
-                .WithImageUrl(data.Results.First().Image)
-                .AddField("ID", data.Results.First().Id)
-                .WithColor(244, 252, 3);
-
-            var embed = builder.Build();
-
-            await Context.Channel.SendMessageAsync(null, false, embed);
-        }
 
 
     }
