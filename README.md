@@ -17,13 +17,15 @@ discord:
 Run the bot. The console should log `Connected as [Application Name]:[Discord Discriminator]`
 
 ## Contributing to the Project
-Follow the Issue Layout if you want new features, otherwise you can fork the repo and add the features yourself. I will credit you in the project's wiki and in the bot's command'
+Follow the Issue Layout if you want new features, otherwise you can fork the repo and add the features yourself. I will credit you in the project's wiki and in the bot's commands
 
 ## Supporting the Project
 To support the project you can:
 donate on Patreon 
 or donate on [StreamElements Tip Page](https://streamelements.com/davcam0055/tip)
 
+# License
+The bot is under the MIT license. Check LICENSE
 # Documentation
 Check the [Project's Wiki](https://github.com/DavCam05/Brobot/wiki)
 
