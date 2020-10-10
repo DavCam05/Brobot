@@ -16,7 +16,7 @@ namespace Brobot.Commands
             var builder = new EmbedBuilder() //update for report commands
                  .WithTitle("Help Menu")
                  .WithUrl("https://github.com/DavCam05/Brobot/wiki/Commands")
-                 .WithDescription("Welcome to the Brobot help center. Type `help.[command]` to learn more about the available commands. Alternatively you can visit the GitHub Repository. Link is in the title. If the bot returns errrors that you cannot understand you can use the command help.errormessages.")
+                 .WithDescription("Welcome to the Brobot help center. Type `help.[command]` to learn more about the available commands. Alternatively you can visit the GitHub Repository. Link is in the title. If the bot returns errrors that you cannot understand you can use the command `bro!errorcodess`")
                  .AddField("Commands", "`help` sends this embed " +
                  "\n`ping` pings the bot " +
                  "\n`infome` sends info about you" +
@@ -37,7 +37,7 @@ namespace Brobot.Commands
                  "\n`memetemplates` fetches some meme templates for you" +
                  "\n`news` fetches the latest news on a topic specified" +
                  "\n`calculator` the help menu for the calculator" +
-                 "\n`imdb` searches movies from IMDb, needs a movie ID")
+                 "\n`imdb` searches movies from IMDb, needs a movie title")
                  .WithColor(33, 176, 252);
 
             var embed = builder.Build();
@@ -319,32 +319,6 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
 
-        [Command("help.tvsearch")]
-        public async Task HelpTVSearch()
-        {
-            var builder = new EmbedBuilder()
-                .WithTitle("Help Menu")
-                .WithDescription("Command: `tvsearch`")
-                .AddField("Description", "This command returns the ID of a tv show", true)
-                .AddField("Arguments", "<query> the tv show to search", true)
-                .WithColor(33, 176, 252);
-
-            var embed = builder.Build();
-            await Context.Channel.SendMessageAsync(null, false, embed);
-        }
-
-        [Command("help.moviesearch")]
-        public async Task HelpMovieSearch()
-        {
-            var builder = new EmbedBuilder()
-                .WithTitle("Help Menu")
-                .WithDescription("Command: `moviesearch`")
-                .AddField("Description", "This command returns the ID of a movie", true)
-                .AddField("Arguments", "<query> the movie to search", true)
-                .WithColor(33, 176, 252);
-
-            var embed = builder.Build();
-            await Context.Channel.SendMessageAsync(null, false, embed);
-        }
+        
     }
 }
