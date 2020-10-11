@@ -37,7 +37,8 @@ namespace Brobot.Commands
                  "\n`memetemplates` fetches some meme templates for you" +
                  "\n`news` fetches the latest news on a topic specified" +
                  "\n`calculator` the help menu for the calculator" +
-                 "\n`imdb` searches movies from IMDb, needs a movie title")
+                 "\n`imdb` searches movies from IMDb, needs a movie title" +
+                 "\n`music` searches music on Deezer")
                  .WithColor(33, 176, 252);
 
             var embed = builder.Build();
@@ -319,6 +320,20 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
 
-        
+        [Command("help.music")]
+        public async Task HelpMusic()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `imdb`")
+                .AddField("Description", "This command music information", true)
+                .AddField("Arguments", "`<query>` Title of song ", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+
     }
 }
