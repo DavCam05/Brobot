@@ -22,7 +22,7 @@ namespace Brobot.Models
             public string character { get; set; }
         }
 
-        public class Root
+        public class IMDb
         {
             public string id { get; set; }
             public string title { get; set; }

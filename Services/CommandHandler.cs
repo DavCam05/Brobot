@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using IGDB;
 using Microsoft.Extensions.Configuration;
 using Victoria;
 
@@ -43,7 +44,7 @@ namespace Brobot.Services
             if (msg.HasStringPrefix(_config["prefix"], ref pos) || msg.HasMentionPrefix(_discord.CurrentUser, ref pos))
             {
                 var result = await _commands.ExecuteAsync(context, pos, _provider);
-
+                
                 if (!result.IsSuccess)
                 {
                     var reason = result.Error;

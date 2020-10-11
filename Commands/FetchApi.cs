@@ -8,6 +8,7 @@ using System.Net.WebSockets;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Brobot.Models;
 using Discord;
 using Discord.Commands;
 using IMDbApiLib;
@@ -26,6 +27,7 @@ using WikipediaNet;
 using WikipediaNet.Objects;
 using YamlDotNet.Core.Tokens;
 using YamlDotNet.RepresentationModel;
+using static Brobot.Models.DeezerResult;
 using static Brobot.Models.IMDbSearchResult;
 
 namespace Brobot.Commands
@@ -208,7 +210,7 @@ namespace Brobot.Commands
             request.AddHeader("x-rapidapi-key", $"{apikey}");
             IRestResponse response = client.Execute(request);
 
-            Root result = JsonConvert.DeserializeObject<Root>(response.Content);
+            IMDb result = JsonConvert.DeserializeObject<IMDb>(response.Content);
 
             var builder = new EmbedBuilder() // add emojis to the embed
                 .WithTitle($"{result.title}")
@@ -226,7 +228,33 @@ namespace Brobot.Commands
 
         }
 
+        [Command("music")]
+        public async Task MusicSearch(string song)
+        {
+            var apikey = _config["deezerkey"];
+            var client = new RestClient($"https://deezerdevs-deezer.p.rapidapi.com/search?q={song}");
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("x-rapidapi-host", "deezerdevs-deezer.p.rapidapi.com");
+            request.AddHeader("x-rapidapi-key", $"{apikey}");
+            IRestResponse response = client.Execute(request);
 
+            Deezer result = JsonConvert.DeserializeObject<Deezer>(response.Content);
+
+
+            var builder = new EmbedBuilder()
+                .WithTitle($"{result.data.First().title}")
+                .WithUrl($"{result.data.First().link}")
+                .AddField("Duration 🕰️", $"{result.data.First().duration}.")
+                .AddField("Rank ⭐", $"{result.data.First().rank}.")
+                .AddField("Artist 🧑‍🎤", $"{result.data.First().artist.name}.")
+                .AddField("Album :cd: ", $"{result.data.First().album.title}.")
+                .WithImageUrl($"{result.data.First().artist.picture}")
+                .WithThumbnailUrl($"{result.data.First().album.cover}")
+                .WithColor(8, 8, 8);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
 
     }
 }
