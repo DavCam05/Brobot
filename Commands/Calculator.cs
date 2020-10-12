@@ -14,7 +14,7 @@ namespace Brobot.Commands
         public async Task Math()
         {
             await Context.Channel.SendMessageAsync("69+420*3.1415(6969)/42069420 = ????" +
-                "\n idk, I cannot read your mind. Use `bro!calculator` for help with math commands");
+                "\n idk, I cannot read your mind. Use `bro!calculator` for help with calculator related commands");
         }
         [Command("calculator")]
         public async Task CalculateMain()
