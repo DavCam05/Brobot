@@ -37,7 +37,7 @@ namespace Brobot.Commands
                 .AddField("Help Center", "to get to the help center you need to use `bro!help`")
                 .AddField("Prefix", "Brobot takes 2 prefixes: `bro!` or it's mention")
                 .AddField("Developer", "The developer of the bot is TheDeveloper#2860")
-                .AddField("Version", "1.2.0");
+                .AddField("Version", "1.3.0");
 
             var embed = builder.Build();
             await Context.Channel.SendMessageAsync(null, false, embed);
@@ -159,7 +159,8 @@ namespace Brobot.Commands
             var builder = new EmbedBuilder()
                 .WithTitle("Bot Invite Link")
                 .WithDescription("Click the link below to invite the bot to your server!")
-                .AddField("Invite Link", "https://discord.com/oauth2/authorize?client_id=755427910306889820&scope=bot&permissions=2146958839");
+                .AddField("Invite Link", "https://discord.com/oauth2/authorize?client_id=755427910306889820&scope=bot&permissions=2146958839")
+                .AddField("Support Server", "https://discord.gg/XFs3HRU");
             var embed = builder.Build();
 
             await Context.Channel.SendMessageAsync(null, false, embed);
