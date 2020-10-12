@@ -38,7 +38,8 @@ namespace Brobot.Commands
                  "\n`news` fetches the latest news on a topic specified" +
                  "\n`calculator` the help menu for the calculator" +
                  "\n`imdb` searches movies from IMDb, needs a movie title" +
-                 "\n`music` searches music on Deezer")
+                 "\n`music` searches music on Deezer" +
+                 "\n`dadjoke` sends a random Dad Joke")
                  .WithColor(33, 176, 252);
 
             var embed = builder.Build();
@@ -52,6 +53,20 @@ namespace Brobot.Commands
                 .WithTitle("Help Menu")
                 .WithDescription("Command: `ping`")
                 .AddField("Description", "This commad returns the ping time of the bot", true)
+                .AddField("Arguments", "None", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("help.dadjoke")]
+        public async Task HelpDadjoke()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `dadjoke`")
+                .AddField("Description", "This commad sends a random dad joke", true)
                 .AddField("Arguments", "None", true)
                 .WithColor(33, 176, 252);
 
