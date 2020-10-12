@@ -29,6 +29,7 @@ using YamlDotNet.Core.Tokens;
 using YamlDotNet.RepresentationModel;
 using static Brobot.Models.DeezerResult;
 using static Brobot.Models.IMDbSearchResult;
+using static Brobot.Models.JokeResult;
 
 namespace Brobot.Commands
 {
@@ -253,6 +254,29 @@ namespace Brobot.Commands
                 .WithColor(8, 8, 8);
 
             var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        
+        }
+
+        [Command("dadjoke")]
+        public async Task GetJoke()
+        {
+            var apikey = _config["jokekey"];
+            var client = new RestClient("https://dad-jokes.p.rapidapi.com/random/joke");
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("x-rapidapi-host", "dad-jokes.p.rapidapi.com");
+            request.AddHeader("x-rapidapi-key", $"{apikey}");
+            IRestResponse response = client.Execute(request);
+
+            Joke result = JsonConvert.DeserializeObject<Joke>(response.Content);
+
+            var builder = new EmbedBuilder()
+                .WithTitle($"{result.body.First().setup}")
+                .WithDescription($"{result.body.First().punchline}")
+                .WithColor(64, 21, 71);
+
+            var embed = builder.Build();
+
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
 
