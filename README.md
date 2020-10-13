@@ -1,4 +1,5 @@
 # Brobot
+[![Discord](https://discord.com/api/guilds/733442807544545462/widget.png)](https://discord.gg/XFs3HRU)
 Brobot is a general purpose bot that does tasks for you. 
 The bot is built in C# using the Discord.Net library. 
 Mention him with @Brobot and he will execute your command. 
@@ -11,6 +12,11 @@ To install this project you need to have Microsoft .NET Core SDK Version 5.0
 To register the bot you need to create an application on [Discord Developer Portal](https://discord.com/developers). Downolad the project from the repo and compile it using Visual Studio.
 Create a `_config.yml` file and add the bot's token inside it following this layout:
 ```
+prefix : 'prefix'
+imdbkey: 'rapidapi key'
+newskey: 'newsapi.org key'
+deezerkey: 'rapidapi key'
+jokekey: 'rapidapi key'
 discord:
 	token: 'Your token here'
 ```
