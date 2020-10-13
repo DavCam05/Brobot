@@ -1,5 +1,10 @@
 # Brobot
 [![Discord](https://discordapp.com/api/guilds/733442807544545462/embed.png?style=shield)](https://discord.gg/XFs3HRU)
+[![Issues](https://img.shields.io/github/issues/DavCam05/Brobot)](https://github.com/DavCam05/Brobot/issues)
+[![Licence](https://img.shields.io/github/license/DavCam05/Brobot)](https://github.com/DavCam05/Brobot/blob/master/LICENSE)
+[![Release](https://img.shields.io/github/v/release/DavCam05/Brobot)](https://github.com/DavCam05/Brobot/releases)
+
+
 
 Brobot is a general purpose bot that does tasks for you. 
 The bot is built in C# using the Discord.Net library. 
