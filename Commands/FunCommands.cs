@@ -88,5 +88,24 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync("I have just `rm -rf /` your brain");
         }
 
+        [Command("coin")]
+        public async Task Coin()
+        {
+            int randomNumber = random.Next(1, 3);
+
+            switch (randomNumber)
+            {
+                case 1:
+                    await Context.Channel.SendMessageAsync("Heads!");
+                    break;
+
+                case 2:
+                    await Context.Channel.SendMessageAsync("Tails!");
+                    break;
+            }
+
+        }
+
+
     }
 }
