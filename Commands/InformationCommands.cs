@@ -37,7 +37,7 @@ namespace Brobot.Commands
                 .AddField("Help Center", "to get to the help center you need to use `bro!help`")
                 .AddField("Prefix", "Brobot takes 2 prefixes: `bro!` or it's mention")
                 .AddField("Developer", "The developer of the bot is TheDeveloper#2860")
-                .AddField("Version", "1.3.0");
+                .AddField("Version", "1.4.0");
 
             var embed = builder.Build();
             await Context.Channel.SendMessageAsync(null, false, embed);
