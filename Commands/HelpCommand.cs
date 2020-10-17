@@ -39,8 +39,8 @@ namespace Brobot.Commands
                  "\n`calculator` the help menu for the calculator" +
                  "\n`imdb` searches movies from IMDb, needs a movie title" +
                  "\n`music` searches music on Deezer" +
-                 "\n`dadjoke` sends a random Dad Joke" +
-                 "\n`coin` flips a coin" +
+                 "\n`dadjoke` sends a random Dad Joke")
+                 .AddField("More Commands", "\n`coin` flips a coin" +
                  "\n`game` sends game information. Needs full game title with `-` instead of spaces")
                  .WithColor(33, 176, 252);
 
