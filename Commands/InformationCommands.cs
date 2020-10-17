@@ -165,5 +165,11 @@ namespace Brobot.Commands
 
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
+
+        [Command("invitegen")]
+        public async Task InviteGen()
+        {
+           
+        }
     }
 }

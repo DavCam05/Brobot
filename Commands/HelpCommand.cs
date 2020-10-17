@@ -40,7 +40,8 @@ namespace Brobot.Commands
                  "\n`imdb` searches movies from IMDb, needs a movie title" +
                  "\n`music` searches music on Deezer" +
                  "\n`dadjoke` sends a random Dad Joke" +
-                 "\n`coin` flips a coin")
+                 "\n`coin` flips a coin" +
+                 "\n`game` sends game information. Needs full game title with `-` instead of spaces")
                  .WithColor(33, 176, 252);
 
             var embed = builder.Build();
@@ -353,7 +354,7 @@ namespace Brobot.Commands
         {
             var builder = new EmbedBuilder()
                 .WithTitle("Help Menu")
-                .WithDescription("Command: `imdb`")
+                .WithDescription("Command: `music`")
                 .AddField("Description", "This command music information", true)
                 .AddField("Arguments", "`<query>` Title of song ", true)
                 .WithColor(33, 176, 252);
@@ -362,6 +363,19 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
 
+        [Command("help.gmae")]
+        public async Task HelpGame()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `game`")
+                .AddField("Description", "This command sends information about a game. NOTE: You need to search for the FULL game title and instead of spaces you put `-`", true)
+                .AddField("Arguments", "`<name>` Full game title with `-` instead of spaces ", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
 
     }
 }

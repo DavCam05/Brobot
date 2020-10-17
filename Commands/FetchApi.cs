@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.WebSockets;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Brobot.Models;
@@ -30,6 +31,7 @@ using YamlDotNet.RepresentationModel;
 using static Brobot.Models.DeezerResult;
 using static Brobot.Models.IMDbSearchResult;
 using static Brobot.Models.JokeResult;
+using static Brobot.Models.RAWGAPI;
 
 namespace Brobot.Commands
 {
@@ -274,6 +276,32 @@ namespace Brobot.Commands
                 .WithTitle($"{result.body.First().setup}")
                 .WithDescription($"{result.body.First().punchline}")
                 .WithColor(64, 21, 71);
+
+            var embed = builder.Build();
+
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("game")]
+        public async Task GetGame(string name)
+        {
+            var client = new RestClient($"https://api.rawg.io/api/games/{name}");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            RAWG result = JsonConvert.DeserializeObject<RAWG>(response.Content);
+
+            var builder = new EmbedBuilder()
+                .WithTitle(result.name)
+                .WithDescription($"{result.description}.")
+                //.WithThumbnailUrl($"{result.background_image}")
+                //.AddField("Rating", $"{result.rating}.")
+                .AddField("Released", $"{result.released}.")
+                .AddField("Last Updated", $"{result.updated}.")
+                .AddField("Website", $"{result.website}.")
+                .AddField("Sub Reddit", $"{result.reddit_url}.")
+                .AddField("Information By", "RAWG Game Database")
+                .WithImageUrl($"{result.background_image}")
+                .WithColor(35, 43, 69);
 
             var embed = builder.Build();
 
