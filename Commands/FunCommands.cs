@@ -106,6 +106,12 @@ namespace Brobot.Commands
 
         }
 
+        [Command("wife")]
+        public async Task MyWife()
+        {
+            await Context.Channel.SendMessageAsync("I am married to `h o l l y#7418`");
+        }
+
 
     }
 }
