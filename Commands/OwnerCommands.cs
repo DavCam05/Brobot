@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using IMDbApiLib.Models;
 
 namespace Brobot.Commands
 {
@@ -20,7 +21,7 @@ namespace Brobot.Commands
 
 
         [Command("setgame")]
-        [RequireOwner]
+        [RequireOwner(ErrorMessage = "Only the bot owner can use this")]
         public async Task ChangeGameStatus(string name)
         {
             try
