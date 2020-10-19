@@ -41,7 +41,8 @@ namespace Brobot.Commands
                  "\n`music` searches music on Deezer" +
                  "\n`dadjoke` sends a random Dad Joke")
                  .AddField("More Commands", "\n`coin` flips a coin" +
-                 "\n`game` sends game information. Needs full game title with `-` instead of spaces")
+                 "\n`game` sends game information. Needs full game title with `-` instead of spaces" +
+                 "\n`gf` you'll see")
                  .WithColor(33, 176, 252);
 
             var embed = builder.Build();
@@ -55,6 +56,19 @@ namespace Brobot.Commands
                 .WithTitle("Help Menu")
                 .WithDescription("Command: `ping`")
                 .AddField("Description", "This commad returns the ping time of the bot", true)
+                .AddField("Arguments", "None", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+        [Command("help.gf")]
+        public async Task HelpGF()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `gf`")
+                .AddField("Description", "This commad is fun", true)
                 .AddField("Arguments", "None", true)
                 .WithColor(33, 176, 252);
 

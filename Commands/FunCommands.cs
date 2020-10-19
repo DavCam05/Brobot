@@ -4,12 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Discord.Commands;
+using Discord.WebSocket;
 
 namespace Brobot.Commands
 {
     public class FunCommands : ModuleBase
     {
         private readonly Random random = new Random();
+        public static DiscordSocketClient _discord;
+
+        public FunCommands(DiscordSocketClient discord)
+        {
+            _discord = discord;
+        }
 
         [Command("8ball")]
         public async Task EightBall(string question)
@@ -104,6 +111,12 @@ namespace Brobot.Commands
                     break;
             }
 
+        }
+        
+        [Command("gf")]
+        public async Task LookingForGf()
+        {
+            await Context.Channel.SendMessageAsync($"@everyone the lonely guy that run the command needs a girlfriend! Somebody make him happy");
         }
 
     }
