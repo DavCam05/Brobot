@@ -42,7 +42,8 @@ namespace Brobot.Commands
                  "\n`dadjoke` sends a random Dad Joke")
                  .AddField("More Commands", "\n`coin` flips a coin" +
                  "\n`game` sends game information. Needs full game title with `-` instead of spaces" +
-                 "\n`gf` you'll see")
+                 "\n`gf` you'll see" +
+                 "\n`bf` same thing as `gf`")
                  .WithColor(33, 176, 252);
 
             var embed = builder.Build();

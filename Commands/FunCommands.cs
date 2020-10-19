@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Discord.Commands;
 using Discord.WebSocket;
@@ -116,7 +117,14 @@ namespace Brobot.Commands
         [Command("gf")]
         public async Task LookingForGf()
         {
-            await Context.Channel.SendMessageAsync($"@everyone the lonely guy that run the command needs a girlfriend! Somebody make him happy");
+            await Context.Channel.SendMessageAsync($"the lonely guy that run the command needs a girlfriend! Somebody make him happy");
+            
+        }
+        [Command("bf")]
+        public async Task LookingForbf()
+        {
+            await Context.Channel.SendMessageAsync($"the lonely girl that run the command needs a boyfriend! Somebody make her happy");
+
         }
 
     }
