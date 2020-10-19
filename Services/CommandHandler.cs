@@ -8,7 +8,6 @@ using Discord.Commands;
 using Discord.WebSocket;
 using IGDB;
 using Microsoft.Extensions.Configuration;
-using Victoria;
 
 namespace Brobot.Services
 {
@@ -70,7 +69,7 @@ namespace Brobot.Services
 
         public Task OnReady()
         {
-            _discord.SetGameAsync("Version 1.4.0");
+            //_discord.SetGameAsync("Version 1.4.0");
             Console.WriteLine("Brobot is up and running!");
             Console.WriteLine($"Connected as: {_discord.CurrentUser.Username}#{_discord.CurrentUser.Discriminator}");
             return Task.CompletedTask;

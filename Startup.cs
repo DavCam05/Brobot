@@ -9,7 +9,9 @@ using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Brobot.Services;
-using Victoria;
+using Lavalink4NET;
+using Lavalink4NET.DiscordNet;
+using RestSharp;
 
 namespace Brobot
 {
