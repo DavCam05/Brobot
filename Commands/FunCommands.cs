@@ -126,6 +126,18 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync($"the lonely girl that run the command needs a boyfriend! Somebody make her happy");
 
         }
+        [Command("lesbian")]
+        public async Task LookingForlesbian()
+        {
+            await Context.Channel.SendMessageAsync($"the lonely girl that run the command needs a girlfriend! Somebody make her happy");
+
+        }
+        [Command("gay")]
+        public async Task LookingForGay()
+        {
+            await Context.Channel.SendMessageAsync($"the lonely boy that run the command needs a boyfriend! Somebody make him happy");
+
+        }
 
     }
 }
