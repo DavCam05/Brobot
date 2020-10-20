@@ -21,7 +21,7 @@ namespace Brobot.Commands
 
 
         [Command("setgame")]
-        [RequireOwner(ErrorMessage = "Only the bot owner can use this")]
+        [RequireOwner(ErrorMessage = "Ha! You fool. Only the bot owner can use this.")]
         public async Task ChangeGameStatus(string name, int type)
         {
             try
@@ -53,6 +53,36 @@ namespace Brobot.Commands
             }
 
             await Context.Channel.SendMessageAsync("Status has been changed!!");
+        }
+        
+        [Command("setstatus")]
+        [RequireOwner(ErrorMessage = "Ha! You fool. Only the bot owner can use this")]
+        public async Task SetStatus(int status)
+        {
+            try
+            {
+
+                switch (status)
+                {
+                    case 1:
+                        await _discord.SetStatusAsync(UserStatus.Online);
+                        break;
+
+                    case 2:
+                        await _discord.SetStatusAsync(UserStatus.Idle);
+                        break;
+
+                    case 3:
+                        await _discord.SetStatusAsync(UserStatus.DoNotDisturb);
+                        break;
+                }
+            }
+            catch (Exception error)
+            {
+                await Context.Channel.SendMessageAsync("There has been an error \n" +
+                    $"```{error}```");
+
+            }
         }
     }
 }
