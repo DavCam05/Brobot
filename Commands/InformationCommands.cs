@@ -146,7 +146,8 @@ namespace Brobot.Commands
                 .WithDescription("This embed contains all the errors that the bot can give." +
                 "\n```BadArgCount: This means that you haven't provided all the arguments that the command needs```" +
                 "\n```UnknownCommand: The command does not exist in the bot. Check your spelling and try again```" +
-                "\n```ParseFailed: This means that the bot has failed to parse your command. Check if the command is written correctly```")
+                "\n```ParseFailed: This means that the bot has failed to parse your command. Check if the command is written correctly```" +
+                "\n```UnmetPrecondition: This means that the conditions/requirements to run the command are not met eg. NSFW channel, Bot Permissions")
                 .WithColor(222, 0, 0);
 
             var embed = builder.Build();
