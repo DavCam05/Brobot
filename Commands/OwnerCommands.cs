@@ -22,11 +22,28 @@ namespace Brobot.Commands
 
         [Command("setgame")]
         [RequireOwner(ErrorMessage = "Only the bot owner can use this")]
-        public async Task ChangeGameStatus(string name)
+        public async Task ChangeGameStatus(string name, int type)
         {
             try
             {
-                await _discord.SetGameAsync($"{name}", null, ActivityType.Playing);
+                switch (type)
+                {
+                    case 1:
+                        await _discord.SetGameAsync($"{name}", null, ActivityType.Playing);
+                        break;
+
+                    case 2:
+                        await _discord.SetGameAsync($"{name}", null, ActivityType.Listening);
+                        break;
+                    case 3:
+                        await _discord.SetGameAsync($"{name}", null, ActivityType.Watching);
+                        break;
+                   // case 4:
+                     //   await _discord.SetGameAsync($"{name}", null, ActivityType.Streaming);
+                       // break;
+                }
+
+                
             }
             catch (Exception error)
             {
