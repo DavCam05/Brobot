@@ -4,8 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Brobot.Models;
+using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using Newtonsoft.Json;
+using RestSharp;
+using static Brobot.Models.AnimalFacts;
 
 namespace Brobot.Commands
 {
@@ -136,6 +141,197 @@ namespace Brobot.Commands
         public async Task LookingForGay()
         {
             await Context.Channel.SendMessageAsync($"the lonely boy that run the command needs a boyfriend! Somebody make him happy");
+
+        }
+
+        [Command("dogfact")]
+        public async Task GetRandomDogFact()
+        {
+            var client = new RestClient($"https://some-random-api.ml/facts/dog");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            Animal animal = JsonConvert.DeserializeObject<Animal>(response.Content);
+
+            var builder = new EmbedBuilder()
+                .WithTitle("Random Dog Facts")
+                .WithDescription($"{animal.fact}")
+                .WithFooter(" From Some Random API");
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+
+        }
+        [Command("catfact")]
+        public async Task GetRandomCatFact()
+        {
+            var client = new RestClient($"https://some-random-api.ml/facts/cat");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            Animal animal = JsonConvert.DeserializeObject<Animal>(response.Content);
+
+            var builder = new EmbedBuilder()
+                .WithTitle("Random Cat Facts")
+                .WithDescription($"{animal.fact}")
+                .WithFooter(" From Some Random API");
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+
+        }
+
+        [Command("pandafact")]
+        public async Task GetRandomPandaFact()
+        {
+            var client = new RestClient($"https://some-random-api.ml/facts/panda");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            Animal animal = JsonConvert.DeserializeObject<Animal>(response.Content);
+
+            var builder = new EmbedBuilder()
+                .WithTitle("Random Panda Facts")
+                .WithDescription($"{animal.fact}")
+                .WithFooter(" From Some Random API");
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+
+        }
+        [Command("racoonfact")]
+        public async Task GetRandomRacoonFact()
+        {
+            var client = new RestClient($"https://some-random-api.ml/facts/racoon");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            Animal animal = JsonConvert.DeserializeObject<Animal>(response.Content);
+
+            var builder = new EmbedBuilder()
+                .WithTitle("Random Racoon Facts")
+                .WithDescription($"{animal.fact}")
+                .WithFooter(" From Some Random API");
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+
+        }
+
+        [Command("foxfact")]
+        public async Task GetRandomFoxFact()
+        {
+            var client = new RestClient($"https://some-random-api.ml/facts/fox");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            Animal animal = JsonConvert.DeserializeObject<Animal>(response.Content);
+
+            var builder = new EmbedBuilder()
+                .WithTitle("Random Fox Facts")
+                .WithDescription($"{animal.fact}")
+                .WithFooter(" From Some Random API");
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+
+        }
+
+        [Command("koalafact")]
+        public async Task GetRandomKoalaFact()
+        {
+            var client = new RestClient($"https://some-random-api.ml/facts/koala");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            Animal animal = JsonConvert.DeserializeObject<Animal>(response.Content);
+
+            var builder = new EmbedBuilder()
+                .WithTitle("Random Koala Facts")
+                .WithDescription($"{animal.fact}")
+                .WithFooter(" From Some Random API");
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+
+        }
+        [Command("kangaroofact")]
+        public async Task GetRandomKangarooFact()
+        {
+            var client = new RestClient($"https://some-random-api.ml/facts/kangaroo");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            Animal animal = JsonConvert.DeserializeObject<Animal>(response.Content);
+
+            var builder = new EmbedBuilder()
+                .WithTitle("Random Kangaroo Facts")
+                .WithDescription($"{animal.fact}")
+                .WithFooter(" From Some Random API");
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+
+        }
+        [Command("birbfact")]
+        public async Task GetRandomBirbFact()
+        {
+            var client = new RestClient($"https://some-random-api.ml/facts/birb");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            Animal animal = JsonConvert.DeserializeObject<Animal>(response.Content);
+
+            var builder = new EmbedBuilder()
+                .WithTitle("Random Birb Facts")
+                .WithDescription($"{animal.fact}")
+                .WithFooter(" From Some Random API");
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+
+        }
+        [Command("elephantfact")]
+        public async Task GetRandomElephantFact()
+        {
+            var client = new RestClient($"https://some-random-api.ml/facts/elephant");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            Animal animal = JsonConvert.DeserializeObject<Animal>(response.Content);
+
+            var builder = new EmbedBuilder()
+                .WithTitle("Random Elephant Facts")
+                .WithDescription($"{animal.fact}")
+                .WithFooter(" From Some Random API");
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+
+        }
+        [Command("giraffefact")]
+        public async Task GetRandomGiraffeFact()
+        {
+            var client = new RestClient($"https://some-random-api.ml/facts/giraffe");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            Animal animal = JsonConvert.DeserializeObject<Animal>(response.Content);
+
+            var builder = new EmbedBuilder()
+                .WithTitle("Random Giraffe Facts")
+                .WithDescription($"{animal.fact}")
+                .WithFooter(" From Some Random API");
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+
+        }
+        [Command("whalefact")]
+        public async Task GetRandomWhaleFact()
+        {
+            var client = new RestClient($"https://some-random-api.ml/facts/whale");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            Animal animal = JsonConvert.DeserializeObject<Animal>(response.Content);
+
+            var builder = new EmbedBuilder()
+                .WithTitle("Random Whale Facts")
+                .WithDescription($"{animal.fact}")
+                .WithFooter(" From Some Random API");
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
 
         }
 

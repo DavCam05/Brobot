@@ -45,7 +45,18 @@ namespace Brobot.Commands
                  "\n`gf` you'll see" +
                  "\n`bf` same thing as `gf`" +
                  "\n`gay` same thing as `gf` but different" +
-                 "\n`lesbian` same thing as `gf` but different")
+                 "\n`lesbian` same thing as `gf` but different" +
+                 "\n`dogfact` Gets random dog facts" +
+                 "\n`catfact` same thing as `dogfact`" +
+                 "\n`giraffefact` same thing as `dogfact`" +
+                 "\n`racoonfact` same thing as `dogfact`" +
+                 "\n`whalefact` same thing as `dogfact`" +
+                 "\n`elephantfact same thing as `dogfact`" +
+                 "\n`kangaroofact` same thing as `dogfact`" +
+                 "\n`pandafact` same thing as `dogfact`" +
+                 "\n`foxfact` same thing as `dogfact`" +
+                 "\n`birbfact`same thing as `dogfact`" +
+                 "\n`koalafact` same thing as `dogfact`")
                  .WithColor(33, 176, 252);
 
             var embed = builder.Build();
@@ -59,6 +70,19 @@ namespace Brobot.Commands
                 .WithTitle("Help Menu")
                 .WithDescription("Command: `ping`")
                 .AddField("Description", "This commad returns the ping time of the bot", true)
+                .AddField("Arguments", "None", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+        [Command("help.dogfact")]
+        public async Task HelpDogs()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `dogfact`. The command layout is identical for the commands that say `same thing as dogfact`")
+                .AddField("Description", "This commad returns the ping time of the bot. ", true)
                 .AddField("Arguments", "None", true)
                 .WithColor(33, 176, 252);
 
