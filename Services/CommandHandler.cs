@@ -54,7 +54,7 @@ namespace Brobot.Services
                     var builder = new EmbedBuilder()
                         .WithTitle("Error")
                         .WithDescription("There has been an error in executing your command. If you encounter further problems please run the command `bro!github`. Error definitions are here: `bro!errorcodes`")
-                        .AddField("Error:", $"```Error: {result}```")
+                        .AddField("Error:", $"```{result}```")
                         .WithColor(252, 3, 3)
                         .WithCurrentTimestamp();
 
