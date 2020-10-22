@@ -51,12 +51,22 @@ namespace Brobot.Commands
                  "\n`giraffefact` same thing as `dogfact`" +
                  "\n`racoonfact` same thing as `dogfact`" +
                  "\n`whalefact` same thing as `dogfact`" +
-                 "\n`elephantfact same thing as `dogfact`" +
+                 "\n`elephantfact` same thing as `dogfact`" +
                  "\n`kangaroofact` same thing as `dogfact`" +
                  "\n`pandafact` same thing as `dogfact`" +
                  "\n`foxfact` same thing as `dogfact`" +
                  "\n`birbfact`same thing as `dogfact`" +
-                 "\n`koalafact` same thing as `dogfact`")
+                 "\n`koalafact` same thing as `dogfact`" +
+                 "\n`dogimg` gets random images of dogs" +
+                 "\n`catimg` same thing as `dogimg`" +
+                 "\n`pandaimg` same thing as `dogimg`" +
+                 "\n`foximg` same thing as `dogimg`" +
+                 "\n`birbimg` same thing as `dogimg`" +
+                 "\n`koalaimg` same thing as `dogimg`" +
+                 "\n`kangarooimg` same thing as `dogimg`" +
+                 "\n`racoonimg` same thing as `dogimg`" +
+                 "\n`whaleimg` same thing as `dogimg`" +
+                 "\n`pikachuimg` same thing as `dogimg`")
                  .WithColor(33, 176, 252);
 
             var embed = builder.Build();
@@ -82,7 +92,20 @@ namespace Brobot.Commands
             var builder = new EmbedBuilder()
                 .WithTitle("Help Menu")
                 .WithDescription("Command: `dogfact`. The command layout is identical for the commands that say `same thing as dogfact`")
-                .AddField("Description", "This commad returns the ping time of the bot. ", true)
+                .AddField("Description", "This commad returns random dog facts ", true)
+                .AddField("Arguments", "None", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+        [Command("help.dogimg")]
+        public async Task HelpDogsImg()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `dogimg`. The command layout is identical for the commands that say `same thing as dogimg`")
+                .AddField("Description", "This commad returns random dog images ", true)
                 .AddField("Arguments", "None", true)
                 .WithColor(33, 176, 252);
 
