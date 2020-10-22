@@ -12,7 +12,7 @@ namespace Brobot.Models
         public class Animal
         {
             public string fact { get; set; }
-            public string image { get; set; }
+            //public string image { get; set; }
         }
     }
 }
