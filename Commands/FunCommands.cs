@@ -11,6 +11,7 @@ using Discord.WebSocket;
 using Newtonsoft.Json;
 using RestSharp;
 using static Brobot.Models.AnimalFacts;
+using static Brobot.Models.AnimalImages;
 
 namespace Brobot.Commands
 {
@@ -334,6 +335,186 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync(null, false, embed);
 
         }
+
+        [Command("dogimg")]
+        public async Task GetRandomDogImage()
+        {
+            var client = new RestClient($"https://some-random-api.ml/img/dog");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            AnimalImage animalimages = JsonConvert.DeserializeObject<AnimalImage>(response.Content);
+            Console.WriteLine(response.Content);
+
+            var builder = new EmbedBuilder()
+                .WithTitle("Doggo")
+                .WithImageUrl($"{animalimages.link}")
+                .WithFooter("From Some Random API");
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+        [Command("catimg")]
+        public async Task GetRandomCatImage()
+        {
+            var client = new RestClient($"https://some-random-api.ml/img/cat");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            AnimalImage animalimages = JsonConvert.DeserializeObject<AnimalImage>(response.Content);
+            Console.WriteLine(response.Content);
+
+            var builder = new EmbedBuilder()
+                .WithTitle("Cat")
+                .WithImageUrl($"{animalimages.link}")
+                .WithFooter("From Some Random API");
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("pandaimg")]
+        public async Task GetRandomPandaImage()
+        {
+            var client = new RestClient($"https://some-random-api.ml/img/panda");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            AnimalImage animalimages = JsonConvert.DeserializeObject<AnimalImage>(response.Content);
+            Console.WriteLine(response.Content);
+
+            var builder = new EmbedBuilder()
+                .WithTitle("Panda")
+                .WithImageUrl($"{animalimages.link}")
+                .WithFooter("From Some Random API");
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("foximg")]
+        public async Task GetRandomFoxImage()
+        {
+            var client = new RestClient($"https://some-random-api.ml/img/fox");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            AnimalImage animalimages = JsonConvert.DeserializeObject<AnimalImage>(response.Content);
+            Console.WriteLine(response.Content);
+
+            var builder = new EmbedBuilder()
+                .WithTitle("Fox")
+                .WithImageUrl($"{animalimages.link}")
+                .WithFooter("From Some Random API");
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("birbimg")]
+        public async Task GetRandomBirbImage()
+        {
+            var client = new RestClient($"https://some-random-api.ml/img/birb");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            AnimalImage animalimages = JsonConvert.DeserializeObject<AnimalImage>(response.Content);
+            Console.WriteLine(response.Content);
+
+            var builder = new EmbedBuilder()
+                .WithTitle("Birb")
+                .WithImageUrl($"{animalimages.link}")
+                .WithFooter("From Some Random API");
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("kialaimg")]
+        public async Task GetRandomKoalaImage()
+        {
+            var client = new RestClient($"https://some-random-api.ml/img/koala");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            AnimalImage animalimages = JsonConvert.DeserializeObject<AnimalImage>(response.Content);
+            Console.WriteLine(response.Content);
+
+            var builder = new EmbedBuilder()
+                .WithTitle("Koala")
+                .WithImageUrl($"{animalimages.link}")
+                .WithFooter("From Some Random API");
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("Kangarooimg")]
+        public async Task GetRandomKangarooImage()
+        {
+            var client = new RestClient($"https://some-random-api.ml/img/kangaroo");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            AnimalImage animalimages = JsonConvert.DeserializeObject<AnimalImage>(response.Content);
+            Console.WriteLine(response.Content);
+
+            var builder = new EmbedBuilder()
+                .WithTitle("Kangaroo")
+                .WithImageUrl($"{animalimages.link}")
+                .WithFooter("From Some Random API");
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("Racoonimg")]
+        public async Task GetRandomRacoonImage()
+        {
+            var client = new RestClient($"https://some-random-api.ml/img/racoon");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            AnimalImage animalimages = JsonConvert.DeserializeObject<AnimalImage>(response.Content);
+            Console.WriteLine(response.Content);
+
+            var builder = new EmbedBuilder()
+                .WithTitle("Racoon")
+                .WithImageUrl($"{animalimages.link}")
+                .WithFooter("From Some Random API");
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("Whaleimg")]
+        public async Task GetRandomWhaleImage()
+        {
+            var client = new RestClient($"https://some-random-api.ml/img/whale");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            AnimalImage animalimages = JsonConvert.DeserializeObject<AnimalImage>(response.Content);
+            Console.WriteLine(response.Content);
+
+            var builder = new EmbedBuilder()
+                .WithTitle("Whale")
+                .WithImageUrl($"{animalimages.link}")
+                .WithFooter("From Some Random API");
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+        [Command("Pikachuimg")]
+        public async Task GetRandomPikachuImage()
+        {
+            var client = new RestClient($"https://some-random-api.ml/img/pikachu");
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+            AnimalImage animalimages = JsonConvert.DeserializeObject<AnimalImage>(response.Content);
+            Console.WriteLine(response.Content);
+
+            var builder = new EmbedBuilder()
+                .WithTitle("Pickachu")
+                .WithImageUrl($"{animalimages.link}")
+                .WithFooter("From Some Random API");
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+
 
     }
 }
