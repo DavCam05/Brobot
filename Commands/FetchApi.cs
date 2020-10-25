@@ -22,6 +22,7 @@ using NewsAPI;
 using NewsAPI.Constants;
 using NewsAPI.Models;
 using Newtonsoft.Json;
+using PokeApiNet;
 using RestSharp;
 using RestSharp.Extensions;
 using WikipediaNet;
@@ -32,7 +33,6 @@ using static Brobot.Models.DeezerResult;
 using static Brobot.Models.IMDbSearchResult;
 using static Brobot.Models.JokeResult;
 using static Brobot.Models.RAWGAPI;
-
 namespace Brobot.Commands
 {
     public class FetchApi : ModuleBase
@@ -302,6 +302,30 @@ namespace Brobot.Commands
                 .AddField("Information By", "RAWG Game Database")
                 .WithImageUrl($"{result.background_image}")
                 .WithColor(35, 43, 69);
+
+            var embed = builder.Build();
+
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("pokemon")] //Command still in development, DO NOT ADD TO HELP COMMAND 
+        public async Task GetPokemon(string pokemon)
+        {
+            PokeApiClient pokeApiClient = new PokeApiClient();
+
+            Pokemon poke = await pokeApiClient.GetResourceAsync<Pokemon>(pokemon);
+
+            var builder = new EmbedBuilder()
+                .WithTitle(poke.Name)
+                .AddField("Weight", poke.Weight)
+                .AddField("Height", poke.Height)
+                .AddField("Base XP", poke.BaseExperience)
+                .AddField("Species", poke.Species.Name)
+                //.AddField("", poke.)
+                //.AddField("Abilities", poke.Abilities.ToList())
+                //.AddField("Stats", poke.Stats.ToList())
+                .WithColor(255, 255, 0)
+                .WithThumbnailUrl(poke.Sprites.FrontDefault);
 
             var embed = builder.Build();
 
