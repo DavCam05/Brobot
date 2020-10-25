@@ -67,6 +67,7 @@ namespace Brobot.Commands
                  "\n`racoonimg` same thing as `dogimg`" +
                  "\n`whaleimg` same thing as `dogimg`" +
                  "\n`pikachuimg` same thing as `dogimg`")
+                 .AddField("Even More Commands", "`animu` gets random anime gif, specify a category for the gif")
                  .WithColor(33, 176, 252);
 
             var embed = builder.Build();
@@ -81,6 +82,19 @@ namespace Brobot.Commands
                 .WithDescription("Command: `ping`")
                 .AddField("Description", "This commad returns the ping time of the bot", true)
                 .AddField("Arguments", "None", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+        [Command("help.animu")]
+        public async Task HelpAnimu()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `animu`")
+                .AddField("Description", "This command sends random anime gifs. Gifs are sorted in categories.", true)
+                .AddField("Arguments", "`<category>` This is the category for the gifs. Choose from: `face palm`, `wink`, `hug` and `pat`", true)
                 .WithColor(33, 176, 252);
 
             var embed = builder.Build();
