@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using RestSharp;
 using static Brobot.Models.AnimalFacts;
 using static Brobot.Models.AnimalImages;
+using static Brobot.Models.Animu;
 
 namespace Brobot.Commands
 {
@@ -512,6 +513,62 @@ namespace Brobot.Commands
 
             var embed = builder.Build();
             await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("animu")]
+        public async Task GetAnimuGif(string category)
+        {
+            if(category == "wink")
+            {
+                var client = new RestClient($"https://some-random-api.ml/animu/wink");
+                var request = new RestRequest(Method.GET);
+                IRestResponse response = client.Execute(request);
+
+
+                AnimuImage animu = JsonConvert.DeserializeObject<AnimuImage>(response.Content);
+
+                await Context.Channel.SendMessageAsync(animu.link);
+            }else if(category == "pat")
+            {
+                var client = new RestClient($"https://some-random-api.ml/animu/pat");
+                var request = new RestRequest(Method.GET);
+                IRestResponse response = client.Execute(request);
+
+
+                AnimuImage animu = JsonConvert.DeserializeObject<AnimuImage>(response.Content);
+
+                await Context.Channel.SendMessageAsync(animu.link);
+            }else if(category == "hug")
+            {
+                var client = new RestClient($"https://some-random-api.ml/animu/hug");
+                var request = new RestRequest(Method.GET);
+                IRestResponse response = client.Execute(request);
+
+
+                AnimuImage animu = JsonConvert.DeserializeObject<AnimuImage>(response.Content);
+
+                await Context.Channel.SendMessageAsync(animu.link);
+            }else if(category == "face palm")
+            {
+                var client = new RestClient($"https://some-random-api.ml/animu/face-palm");
+                var request = new RestRequest(Method.GET);
+                IRestResponse response = client.Execute(request);
+
+
+                AnimuImage animu = JsonConvert.DeserializeObject<AnimuImage>(response.Content);
+
+                await Context.Channel.SendMessageAsync(animu.link);
+            }
+            else
+            {
+                await Context.Channel.SendMessageAsync("You need to specify a category. Choose from:" +
+                    "\n `face palm`" +
+                    "\n `wink`" +
+                    "\n `hug`" +
+                    "\n `pat`");
+            }
+            
+
         }
 
 
