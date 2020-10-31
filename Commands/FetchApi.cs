@@ -25,6 +25,8 @@ using Newtonsoft.Json;
 using PokeApiNet;
 using RestSharp;
 using RestSharp.Extensions;
+using SteamWebAPI2.Interfaces;
+using SteamWebAPI2.Utilities;
 using WikipediaNet;
 using WikipediaNet.Objects;
 using YamlDotNet.Core.Tokens;
@@ -331,6 +333,15 @@ namespace Brobot.Commands
 
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
+
+        [Command("steam")]
+        public async Task SteamGames(uint gameid)
+        {
+            var webInterfaceFactory = new SteamWebInterfaceFactory(_config["steamkey"]);
+            var steamInterface = webInterfaceFactory.CreateSteamWebInterface<SteamStore>(new HttpClient());
+            var searchedGame = await steamInterface.GetStoreAppDetailsAsync(gameid);
+
+            await Context.Channel.SendMessageAsync(searchedGame.Name);
+        }
     }
 }
-

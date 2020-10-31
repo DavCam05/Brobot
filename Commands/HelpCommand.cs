@@ -67,7 +67,10 @@ namespace Brobot.Commands
                  "\n`racoonimg` same thing as `dogimg`" +
                  "\n`whaleimg` same thing as `dogimg`" +
                  "\n`pikachuimg` same thing as `dogimg`")
-                 .AddField("Even More Commands", "`animu` gets random anime gif, specify a category for the gif")
+                 .AddField("Even More Commands", "`animu` gets random anime gif, specify a category for the gif" +
+                 "\n`ytcomment` Creates a fake youtube comment with custom avatar, name and content " +
+                 "\n`filterimg` Adds filters to an image." +
+                 "\n`viewcolor` Sends the color of the specified HEX code ")
                  .WithColor(33, 176, 252);
 
             var embed = builder.Build();
@@ -82,6 +85,45 @@ namespace Brobot.Commands
                 .WithDescription("Command: `ping`")
                 .AddField("Description", "This commad returns the ping time of the bot", true)
                 .AddField("Arguments", "None", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+        [Command("help.viewcolor")]
+        public async Task Helpviewcolor()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `viewcolor`")
+                .AddField("Description", "This command sends the specified Hexadecimal (HEX) color ", true)
+                .AddField("Arguments", "`<hex>` the hex code of the color", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+        [Command("help.filterimg")]
+        public async Task HelpFilterImg()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `filterimg`")
+                .AddField("Description", "This command sends an image with a custom filter", true)
+                .AddField("Arguments", "`<avatar>` This is the link for the avatar. must not contain `&` symbol \n `<filter>` the filter of the image. Choose from: greyscale, invert, brightness, threshold, sepia, red, green, blue, blurple, pixelate, blur", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+        [Command("help.ytcomment")]
+        public async Task HelpYtComment()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `ytcomment`")
+                .AddField("Description", "This command sends a custom yt comment", true)
+                .AddField("Arguments", "`<avatar>` This is the link for the avatar. must not contain `&` symbol \n`<username>` the username \n`<comment>` the content of the comment", true)
                 .WithColor(33, 176, 252);
 
             var embed = builder.Build();

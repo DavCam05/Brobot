@@ -571,6 +571,29 @@ namespace Brobot.Commands
 
         }
 
+        [Command("ytcomment")]
+        public async Task CreateYTComment(string avatar, string username, string comment)
+        {
+            await Context.Channel.SendMessageAsync($"https://some-random-api.ml/canvas/youtube-comment?avatar={avatar}&username={username}&comment={comment}");
+
+        }
+
+        [Command("viewcolor")]
+        public async Task CreateColor(string hex)
+        {
+            await Context.Channel.SendMessageAsync($"https://some-random-api.ml/canvas/colorviewer?hex={hex}");
+        }
+
+        [Command("filterimg")]
+        public async Task FilterImg(string filter, string avatarLink)
+        {
+            if (filter == null)
+            {
+                await Context.Channel.SendMessageAsync("Please instet a valid filter: greyscale, invert, brightness, threshold, sepia, red, green, blue, blurple, pixelate, blur");
+            }
+            await Context.Channel.SendMessageAsync($"https://some-random-api.ml/canvas/{filter}?avatar={avatarLink}");
+        }
+
 
 
     }
