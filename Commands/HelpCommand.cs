@@ -33,7 +33,7 @@ namespace Brobot.Commands
                 "\n`newtext` creates a new text channel" +
                 "`n`newvoice` creates a new voice channel")
                 .AddField("Web Search Commands", "`anime` searches anime on MAL" +
-                "\n`manga` searches manga on MAL`" +
+                "\n`manga` searches manga on MAL" +
                 "\n`malcharacter` fetches an image for the requested MAL character" +
                 "\n`memetemplates` fetches random meme templates" +
                 "\n`news` fetches the latest news on the requested topic" +
