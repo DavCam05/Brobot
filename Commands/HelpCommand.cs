@@ -57,7 +57,8 @@ namespace Brobot.Commands
                  "\n`pandafact` same thing as `dogfact`" +
                  "\n`foxfact` same thing as `dogfact`" +
                  "\n`birbfact`same thing as `dogfact`" +
-                 "\n`koalafact` same thing as `dogfact`" +
+                 "\n`koalafact` same thing as `dogfact`")
+                 .AddField("Fun Commands Part 2",
                  "\n`dogimg` gets random images of dogs" +
                  "\n`catimg` same thing as `dogimg`" +
                  "\n`pandaimg` same thing as `dogimg`" +
