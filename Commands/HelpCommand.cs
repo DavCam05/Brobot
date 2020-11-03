@@ -12,36 +12,37 @@ namespace Brobot.Commands
     {
       [Command("help")]
       public async Task Help()
-        {
-            var builder = new EmbedBuilder() //update for report commands
-                 .WithTitle("Help Menu")
-                 .WithUrl("https://github.com/DavCam05/Brobot/wiki/Commands")
-                 .WithDescription("Welcome to the Brobot help center. Type `help.[command]` to learn more about the available commands. Alternatively you can visit the GitHub Repository. Link is in the title. If the bot returns errrors that you cannot understand you can use the command `bro!errorcodess`")
-                 .AddField("Commands", "`help` sends this embed " +
-                 "\n`ping` pings the bot " +
-                 "\n`infome` sends info about you" +
-                 "\n`infoother` sends info about another user" +
-                 "\n`infobot` sends information about the bot" +
-                 "\n`serverinfo` sends the info about the server the bot is in" +
-                 "\n`time` sends the server time where the bot is running" +
-                 "\n`invite` Invite for the bot" +
-                 "\n`anime` fetches anime info on MAL" +
-                 "\n`manga` fetches manga info on MAL" +
-                 "\n`malcharacter` fetches anime/manga character info on MAL" +
-                 "\n`github` sends the github repo of the bot" +
-                 "\n`twitch` sends the twitch page of the owner of the bot" +
-                 "\n`donate` sends the donation page of the owner of the bot" +
-                 "\n`newtext` creates a text channel" +
-                 "\n`newvoice` creates a voice channel" +
+        {              
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Here is a list of all commands that are available for use. To know more about the command requirements you can type `help.[command]`. This will send an embed with all the details for said command")
+                .AddField("Calculator Related Commands", "`calculator` Sends the help menu for the calculator")
+                .AddField("General Commands", "`ping` sends the ping time, shard and connection status" +
+                "\n`infome` sends information about your profile (eg. avatar, discriminator, id, status...)" +
+                "\n`infoother` sends information about another person's profile. You need to tag the user" +
+                "\n`infobot` sends information about the bot" +
+                "\n`serverinfo` sends information about the server" +
+                "\n`invite` sends the invite for the bot. " +
+                "\n`github` sends the github repo of the bot" +
+                "\n`twitch` sends the twitch page of the owner of the bot" +
+                "\n`donate` sends the donation page of the owner of the bot" +
+                "\n`time` sends the time of the server where the bot is run on" +
+                "\n`help` sends this embed")
+                .AddField("Server Commands","" +
+                "\n`newrole` creates a new role with no permissions" +
+                "\n`newtext` creates a new text channel" +
+                "`n`newvoice` creates a new voice channel")
+                .AddField("Web Search Commands", "`anime` searches anime on MAL" +
+                "\n`manga` searches manga on MAL`" +
+                "\n`malcharacter` fetches an image for the requested MAL character" +
+                "\n`memetemplates` fetches random meme templates" +
+                "\n`news` fetches the latest news on the requested topic" +
+                "\n`imdb` fetches movie information on IMDB" +
+                "\n`music`fetches song information on Deezer" +
+                "\n`dadjoke` fetches random dad jokes" +
+                "\n`game` fetches game information on RAWG. WARNING: The api is a bit broken and it will require you to replace spaces with `-` or `_")
+                .AddField("Fun Commands", "`animu` gets random anime gifs, specify the category of the gif" +
                  "\n`8ball` predicts the future" +
-                 "\n`memetemplates` fetches some meme templates for you" +
-                 "\n`news` fetches the latest news on a topic specified" +
-                 "\n`calculator` the help menu for the calculator" +
-                 "\n`imdb` searches movies from IMDb, needs a movie title" +
-                 "\n`music` searches music on Deezer" +
-                 "\n`dadjoke` sends a random Dad Joke")
-                 .AddField("More Commands", "\n`coin` flips a coin" +
-                 "\n`game` sends game information. Needs full game title with `-` instead of spaces" +
                  "\n`gf` you'll see" +
                  "\n`bf` same thing as `gf`" +
                  "\n`gay` same thing as `gf` but different" +
@@ -66,12 +67,11 @@ namespace Brobot.Commands
                  "\n`kangarooimg` same thing as `dogimg`" +
                  "\n`racoonimg` same thing as `dogimg`" +
                  "\n`whaleimg` same thing as `dogimg`" +
-                 "\n`pikachuimg` same thing as `dogimg`")
-                 .AddField("Even More Commands", "`animu` gets random anime gif, specify a category for the gif" +
+                 "\n`pikachuimg` same thing as `dogimg`" +
                  "\n`ytcomment` Creates a fake youtube comment with custom avatar, name and content " +
                  "\n`filterimg` Adds filters to an image." +
                  "\n`viewcolor` Sends the color of the specified HEX code ")
-                 .WithColor(33, 176, 252);
+                .WithColor(33, 176, 252);
 
             var embed = builder.Build();
             await Context.Channel.SendMessageAsync(null, false, embed);

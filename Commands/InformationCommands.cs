@@ -170,7 +170,7 @@ namespace Brobot.Commands
         [Command("invitegen")]
         public async Task InviteGen()
         {
-           
+            //await Context.Guild.Create
         }
     }
 }
