@@ -31,7 +31,7 @@ namespace Brobot.Commands
                 .AddField("Server Commands","" +
                 "\n`newrole` creates a new role with no permissions" +
                 "\n`newtext` creates a new text channel" +
-                "`n`newvoice` creates a new voice channel")
+                "\n`newvoice` creates a new voice channel")
                 .AddField("Web Search Commands", "`anime` searches anime on MAL" +
                 "\n`manga` searches manga on MAL" +
                 "\n`malcharacter` fetches an image for the requested MAL character" +
@@ -40,7 +40,7 @@ namespace Brobot.Commands
                 "\n`imdb` fetches movie information on IMDB" +
                 "\n`music`fetches song information on Deezer" +
                 "\n`dadjoke` fetches random dad jokes" +
-                "\n`game` fetches game information on RAWG. WARNING: The api is a bit broken and it will require you to replace spaces with `-` or `_")
+                "\n`game` fetches game information on RAWG. WARNING: The api is a bit broken and it will require you to replace spaces with `-` or `_`")
                 .AddField("Fun Commands", "`animu` gets random anime gifs, specify the category of the gif" +
                  "\n`8ball` predicts the future" +
                  "\n`gf` you'll see" +
