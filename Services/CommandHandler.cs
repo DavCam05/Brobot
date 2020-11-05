@@ -47,9 +47,6 @@ namespace Brobot.Services
                 if (!result.IsSuccess)
                 {
                     var reason = result.Error;
-                    Console.WriteLine("There has been an error!");
-                    Console.WriteLine(reason);
-                    Console.WriteLine(result);
 
                     var builder = new EmbedBuilder()
                         .WithTitle("Error")
@@ -70,7 +67,7 @@ namespace Brobot.Services
         public Task OnReady()
         {
             //_discord.SetGameAsync("Version 1.4.0");
-            Console.WriteLine("Brobot is up and running!");
+            //Console.WriteLine("Brobot is up and running!");
             Console.WriteLine($"Connected as: {_discord.CurrentUser.Username}#{_discord.CurrentUser.Discriminator}");
             return Task.CompletedTask;
         }

@@ -16,12 +16,45 @@ public class LoggingService
 	{
 		if (message.Exception is CommandException cmdException)
 		{
-			Console.WriteLine($"[Command/{message.Severity}] {cmdException.Command.Aliases.First()}"
-				+ $" failed to execute in {cmdException.Context.Channel}.");
-			Console.WriteLine(cmdException);
+			Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"[Command/{ message.Severity}] { cmdException.Command.Aliases.First()}" + $" failed to execute in { cmdException.Context.Channel}.");
+            Console.ResetColor();
+            Console.WriteLine(cmdException);
 		}
-		else
-			Console.WriteLine($"[General/{message.Severity}] {message}");
+        else
+        {
+			if (message.Severity is LogSeverity.Error)
+			{
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine($"[General/{message.Severity}] {message}");
+				Console.ResetColor();
+			}
+			else if (message.Severity is LogSeverity.Warning)
+			{
+				Console.ForegroundColor = ConsoleColor.Yellow;
+				Console.WriteLine($"[General/{message.Severity}] {message}");
+				Console.ResetColor();
+			}
+			else if (message.Severity is LogSeverity.Critical)
+			{
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine($"[General/{message.Severity}] {message}");
+				Console.ResetColor();
+			}
+			else if (message.Severity is LogSeverity.Info)
+			{
+				Console.ForegroundColor = ConsoleColor.Blue;
+				Console.WriteLine($"[General/{message.Severity}] {message}");
+				Console.ResetColor();
+			}
+			else if (message.Severity is LogSeverity.Verbose)
+			{
+				Console.ForegroundColor = ConsoleColor.Cyan;
+				Console.WriteLine($"[General/{message.Severity}] {message}");
+				Console.ResetColor();
+			}
+		}
+			
 
 		return Task.CompletedTask;
 	}
