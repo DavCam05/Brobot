@@ -68,7 +68,9 @@ namespace Brobot.Services
         {
             //_discord.SetGameAsync("Version 1.4.0");
             //Console.WriteLine("Brobot is up and running!");
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Connected as: {_discord.CurrentUser.Username}#{_discord.CurrentUser.Discriminator}");
+            Console.ResetColor();
             return Task.CompletedTask;
         }
     }
