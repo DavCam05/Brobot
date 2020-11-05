@@ -157,14 +157,8 @@ namespace Brobot.Commands
         [Command("invite")]
         public async Task Invite()
         {
-            var builder = new EmbedBuilder()
-                .WithTitle("Bot Invite Link")
-                .WithDescription("Click the link below to invite the bot to your server!")
-                .AddField("Invite Link", "https://discord.com/oauth2/authorize?client_id=755427910306889820&scope=bot&permissions=2146958839")
-                .AddField("Support Server", "https://discord.gg/XFs3HRU");
-            var embed = builder.Build();
-
-            await Context.Channel.SendMessageAsync(null, false, embed);
+            await Context.Channel.SendMessageAsync("Support Server: https://discord.gg/XFs3HRU ");
+            await Context.Channel.SendMessageAsync("Bot Invite Link: https://discord.com/oauth2/authorize?client_id=755427910306889820&scope=bot&permissions=2146958839 ");
         }
 
         [Command("invitegen")]
