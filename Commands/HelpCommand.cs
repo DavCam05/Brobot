@@ -28,6 +28,10 @@ namespace Brobot.Commands
                 "\n`donate` sends the donation page of the owner of the bot" +
                 "\n`time` sends the time of the server where the bot is run on" +
                 "\n`help` sends this embed")
+                .AddField("Moderation Commands", "`kick` kicks a member from the server" +
+                "\n`ban` bans a member from the server" +
+                "\n`addrole` adds a role to a person" +
+                "\n`remrole` removes a role from a person")
                 .AddField("Server Commands","" +
                 "\n`newrole` creates a new role with no permissions" +
                 "\n`newtext` creates a new text channel" +
@@ -86,6 +90,60 @@ namespace Brobot.Commands
                 .WithDescription("Command: `ping`")
                 .AddField("Description", "This commad returns the ping time of the bot", true)
                 .AddField("Arguments", "None", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+        [Command("help.ban")]
+        public async Task HelpBan()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `ban`")
+                .AddField("Description", "This command bans people from the server", true)
+                .AddField("Arguments", "`<user>` The user you want to ban. In the format of `<@![User ID]> or a ping. Bots aren't recognised", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+        [Command("help.kick")]
+        public async Task HelpKicks()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `kick`")
+                .AddField("Description", "This command kicks people from the server", true)
+                .AddField("Arguments", "`<user>` The user you want to kick. In the format of `<@![User ID]> or a ping. Bots aren't recognised", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+        [Command("help.addrole")]
+        public async Task HelpAddRole()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `addrole`")
+                .AddField("Description", "This command adds role", true)
+                .AddField("Arguments", "`<role>` the role. In the format of a ping" +
+                "\n`<user>` The user you want to give the role to. In the format of `<@![User ID]> or a ping. Bots aren't recognised", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+        [Command("help.remrole")]
+        public async Task HelpremRole()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `remrole`")
+                .AddField("Description", "This command removes role", true)
+                .AddField("Arguments", "`<role>` the role. In the format of a ping" +
+                "\n`<user>` The user you want to remove the role from. In the format of `<@![User ID]> or a ping. Bots aren't recognised", true)
                 .WithColor(33, 176, 252);
 
             var embed = builder.Build();
