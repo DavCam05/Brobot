@@ -27,7 +27,8 @@ namespace Brobot.Commands
                 "\n`twitch` sends the twitch page of the owner of the bot" +
                 "\n`donate` sends the donation page of the owner of the bot" +
                 "\n`time` sends the time of the server where the bot is run on" +
-                "\n`help` sends this embed")
+                "\n`help` sends this embed" +
+                "\n`vote` sends you a link for the bot's top.gg page")
                 .AddField("Moderation Commands", "`kick` kicks a member from the server" +
                 "\n`ban` bans a member from the server" +
                 "\n`addrole` adds a role to a person" +
@@ -82,6 +83,19 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
 
+        [Command("help.vote")]
+        public async Task HelpVote()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `vote`")
+                .AddField("Description", "This commad sends the voting page for the bot on top.gg", true)
+                .AddField("Arguments", "None", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
         [Command("help.ping")]
         public async Task HelpPing()
         {

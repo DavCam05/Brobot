@@ -50,5 +50,18 @@ namespace Brobot.Commands
             var embed = builder.Build();
             await Context.Channel.SendMessageAsync(null, false, embed);
         }
+
+        [Command("vote")]
+        public async Task Vote()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Brobot's Page!")
+                .WithUrl("https://top.gg/bot/755427910306889820")
+                .WithDescription("Go vote the bot!!!!!!")
+                .WithColor(169, 3, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
     }
 }
