@@ -32,8 +32,7 @@ namespace Brobot.Commands
                 .AddField("Moderation Commands", "`kick` kicks a member from the server" +
                 "\n`ban` bans a member from the server" +
                 "\n`addrole` adds a role to a person" +
-                "\n`remrole` removes a role from a person")
-                .AddField("Server Commands","" +
+                "\n`remrole` removes a role from a person" +
                 "\n`newrole` creates a new role with no permissions" +
                 "\n`newtext` creates a new text channel" +
                 "\n`newvoice` creates a new voice channel")
