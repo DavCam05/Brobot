@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
@@ -50,7 +51,31 @@ namespace Brobot.Commands
             await Context.Channel.SendMessageAsync($"The {role} role was removed from {user}");
         }
 
+        [Command("newtext")]
+        [RequireBotPermission(GuildPermission.ManageChannels, ErrorMessage = "The bot require the ManageChannels permission")]
+        [RequireUserPermission(GuildPermission.ManageChannels, ErrorMessage = "You need to have the ManageChannels permission")]
+        public async Task CreateText(string channelname)
+        {
+            await Context.Guild.CreateTextChannelAsync(channelname);
+            await Context.Channel.SendMessageAsync($"`{channelname}` has been created. You can now add permissions and move it in your chosen category. The channel is at the top of the left sidebar");
+        }
 
+        [Command("newvoice")]
+        [RequireUserPermission(ChannelPermission.ManageChannels, ErrorMessage = "You require the ManageChannels permission")]
+        [RequireBotPermission(ChannelPermission.ManageChannels, ErrorMessage = "The bot require the ManageChannels permission")]
+        public async Task CreateVoice(string channelname)
+        {
+            await Context.Guild.CreateVoiceChannelAsync(channelname);
+            await Context.Channel.SendMessageAsync("Channel has been created. You can now add permissions and move it in your chosen category. The channel is at the top of the left sidebar");
+        }
 
+        [Command("newrole")]
+        [RequireUserPermission(GuildPermission.ManageRoles, ErrorMessage = "You require the ManageRoles permission")]
+        [RequireBotPermission(GuildPermission.ManageRoles, ErrorMessage = "The bot requires the ManageRoles permission")]
+        public async Task CreateRole(string rolename)
+        {
+            await Context.Guild.CreateRoleAsync($"{rolename}", null, null, false, null);
+            await Context.Channel.SendMessageAsync($"The `{rolename}` role has been created. You may now go and edit the permission for said role.");
+        }
     }
 }
