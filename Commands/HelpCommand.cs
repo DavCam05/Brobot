@@ -28,7 +28,8 @@ namespace Brobot.Commands
                 "\n`donate` sends the donation page of the owner of the bot" +
                 "\n`time` sends the time of the server where the bot is run on" +
                 "\n`help` sends this embed" +
-                "\n`vote` sends you a link for the bot's top.gg page")
+                "\n`vote` sends you a link for the bot's top.gg page" +
+                "\n`afk` sets your nickname to `[AFK] {username}`")
                 .AddField("Moderation Commands", "`kick` kicks a member from the server" +
                 "\n`ban` bans a member from the server" +
                 "\n`addrole` adds a role to a person" +
@@ -90,6 +91,19 @@ namespace Brobot.Commands
                 .WithDescription("Command: `vote`")
                 .AddField("Description", "This commad sends the voting page for the bot on top.gg", true)
                 .AddField("Arguments", "None", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+        [Command("help.afk")]
+        public async Task HelpAFK()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `afk`")
+                .AddField("Description", "This command changes your nickname", true)
+                .AddField("Arguments", "`<user>` mention yourself to change the nicname", true)
                 .WithColor(33, 176, 252);
 
             var embed = builder.Build();
