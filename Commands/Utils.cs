@@ -36,7 +36,7 @@ namespace Brobot.Commands
             }
             else
             {
-                await user.ModifyAsync(x => x.Nickname = "Changed");
+                await user.ModifyAsync(x => x.Nickname = $"[AFK] {user.Username}");
                 await Context.Channel.SendMessageAsync("Something happened");
             }
         }
