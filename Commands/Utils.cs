@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
+using Discord.WebSocket;
 
 namespace Brobot.Commands
 {
     public class Utils : ModuleBase //command not ready DO NOT ADD TO HELP OR DOCS
     {
+
         [Command("poll")]
         public async Task SimplePoll(string question)
         {
@@ -22,6 +25,20 @@ namespace Brobot.Commands
             var embed = builder.Build();
 
             await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("afk")]
+        public async Task Afk(SocketGuildUser user) //changes nickname of a user to [AFK] {username}
+        {
+            if (user.Id != Context.User.Id)
+            {
+                await Context.Channel.SendMessageAsync("You can only change your afk status, not somebody else's");
+            }
+            else
+            {
+                await user.ModifyAsync(x => x.Nickname = "Changed");
+                await Context.Channel.SendMessageAsync("Something happened");
+            }
         }
     }
 }
