@@ -144,8 +144,8 @@ namespace Brobot.Commands
         {
             var builder = new EmbedBuilder()
                 .WithTitle("Error Codes")
-                .WithDescription("This embed contains all the errors that the bot can give." +
-                "\n```BadArgCount: This means that you haven't provided all the arguments that the command needs```" +
+                .WithDescription("This embed contains all the errors that the bot can give. Note, if the command is written properly with the right arguments but it faill because there has been an internal error, the command will fail silently. You can report this by joining the development server and let the admin know" +
+                "\n```BadArgCount: This means that you haven't provided all the arguments that the command needs to exeute the command correctly```" +
                 "\n```UnknownCommand: The command does not exist in the bot. Check your spelling and try again```" +
                 "\n```ParseFailed: This means that the bot has failed to parse your command. Check if the command is written correctly```" +
                 "\n```UnmetPrecondition: This means that the conditions/requirements to run the command are not met eg. NSFW channel, Bot Permissions```")
@@ -160,13 +160,6 @@ namespace Brobot.Commands
         {
             await Context.Channel.SendMessageAsync("Support Server: https://discord.gg/XFs3HRU ");
             await Context.Channel.SendMessageAsync("Bot Invite Link: https://discord.com/oauth2/authorize?client_id=755427910306889820&scope=bot&permissions=2146958839 ");
-        }
-
-        [Command("invitegen")]
-        public async Task InviteGen()
-        {
-            //await Context.
-            await Context.Channel.SendMessageAsync("Command has not yet been implemented");
         }
     }
 }
