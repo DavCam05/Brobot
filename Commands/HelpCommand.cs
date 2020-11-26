@@ -29,7 +29,8 @@ namespace Brobot.Commands
                 "\n`time` sends the time of the server where the bot is run on" +
                 "\n`help` sends this embed" +
                 "\n`vote` sends you a link for the bot's top.gg page" +
-                "\n`afk` sets your nickname to `[AFK] {username}`")
+                "\n`afk` sets your nickname to `[AFK] {username}`. NOTE: For this to work you MUST ping yourself: `bro!afk @user`" +
+                "\n`noafk` removes the AFK status on your nickname. NOTE: For this to work you MUST ping yourself: `bro!noafk @user`")
                 .AddField("Moderation Commands", "`kick` kicks a member from the server" +
                 "\n`ban` bans a member from the server" +
                 "\n`addrole` adds a role to a person" +
@@ -103,7 +104,20 @@ namespace Brobot.Commands
                 .WithTitle("Help Menu")
                 .WithDescription("Command: `afk`")
                 .AddField("Description", "This command changes your nickname", true)
-                .AddField("Arguments", "`<user>` mention yourself to change the nicname", true)
+                .AddField("Arguments", "`<user>` mention yourself to change the nickname", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+        [Command("help.noafk")]
+        public async Task HelpNoAFK()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `noafk`")
+                .AddField("Description", "This command removes the AFK status from your nickname", true)
+                .AddField("Arguments", "`<user>` mention yourself to change the nickname", true)
                 .WithColor(33, 176, 252);
 
             var embed = builder.Build();

@@ -37,7 +37,20 @@ namespace Brobot.Commands
             else
             {
                 await user.ModifyAsync(x => x.Nickname = $"[AFK] {user.Username}");
-                await Context.Channel.SendMessageAsync("Something happened");
+                await Context.Channel.SendMessageAsync("Set AFK Status on your nickname");
+            }
+        }
+        [Command("noafk")]
+        public async Task NoAfk(SocketGuildUser user) //changes nickname of a user to [AFK] {username}
+        {
+            if (user.Id != Context.User.Id)
+            {
+                await Context.Channel.SendMessageAsync("You can only change your afk status, not somebody else's");
+            }
+            else
+            {
+                await user.ModifyAsync(x => x.Nickname = $"{user.Username}");
+                await Context.Channel.SendMessageAsync("Removed AFK status on your nickname");
             }
         }
     }
