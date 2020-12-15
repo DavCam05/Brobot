@@ -104,13 +104,12 @@ namespace Brobot.Commands
         [Command("serverinfo")]
         public async Task ServerInfo()
         {
-            var count = await Context.Guild.GetUsersAsync();
-            var users = count.Count();
+            var users = await Context.Guild.GetUsersAsync();
 
-            var onlineUsers = count.Where(x => x.Status == UserStatus.Online).Count();
-            var offlineUsers = count.Where(x => x.Status == UserStatus.Offline).Count();
-            var dndUsers = count.Where(x => x.Status == UserStatus.DoNotDisturb).Count();
-            var idleUsers = count.Where(x => x.Status == UserStatus.Idle).Count();
+            var onlineUsers = users.Where(x => x.Status == UserStatus.Online).Count();
+            var offlineUsers = users.Where(x => x.Status == UserStatus.Offline).Count();
+            var dndUsers = users.Where(x => x.Status == UserStatus.DoNotDisturb).Count();
+            var idleUsers = users.Where(x => x.Status == UserStatus.Idle).Count();
 
             var builder = new EmbedBuilder()
                    .WithTitle($"Server Info for {Context.Guild.Name} ")
@@ -121,7 +120,7 @@ namespace Brobot.Commands
                    .AddField("Server Name", Context.Guild.Name)
                    .AddField("Server Creation Date 🍰", Context.Guild.CreatedAt.ToString("dd/MM/yyyy"), true)
                    .AddField("Emotes Count", Context.Guild.Emotes.Count(), true)
-                   .AddField("Member Count", $"{users} users are in this server", true )
+                   .AddField("Member Count", $"{users.Count} users are in this server", true )
                    .AddField("Online Members <:online2:464520569975603200> ", $"{onlineUsers} users are online", true)
                    .AddField("Offline Members <:offline2:464520569929334784>", $"{offlineUsers} users are offline", true)
                    .AddField("Do Not Disturb Members <:dnd2:464520569560498197> ",  $"{dndUsers} users are on Do Not Disturb", true)
