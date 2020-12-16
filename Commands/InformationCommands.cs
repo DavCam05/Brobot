@@ -60,7 +60,7 @@ namespace Brobot.Commands
                 .AddField("Joined At 📥", $"{(Context.User as SocketGuildUser).JoinedAt.Value.ToString("dd/MM/yyyy")}.", true)
                 //.AddField("Roles", $"{(Context.User as SocketGuildUser).Roles.GetEnumerator()}")
                 .AddField("Activity <a:typing:393848431413559296>", $"{Context.User.Activity}.")
-                .AddField("Status <:online2:464520569975603200> <:offline2:464520569929334784> <:away2:464520569862357002> <:dnd2:464520569560498197>", Context.User.Status )
+                //.AddField("Status <:online2:464520569975603200> <:offline2:464520569929334784> <:away2:464520569862357002> <:dnd2:464520569560498197>", Context.User.Status )
                 .AddField("Are you a bot? <:botTag:230105988211015680>", Context.User.IsBot, true)
                 .WithCurrentTimestamp();
 
@@ -120,11 +120,11 @@ namespace Brobot.Commands
                    .AddField("Server Name", Context.Guild.Name)
                    .AddField("Server Creation Date 🍰", Context.Guild.CreatedAt.ToString("dd/MM/yyyy"), true)
                    .AddField("Emotes Count", Context.Guild.Emotes.Count(), true)
-                   .AddField("Member Count", $"{users.Count} users are in this server", true )
-                   .AddField("Online Members <:online2:464520569975603200> ", $"{onlineUsers} users are online", true)
-                   .AddField("Offline Members <:offline2:464520569929334784>", $"{offlineUsers} users are offline", true)
-                   .AddField("Do Not Disturb Members <:dnd2:464520569560498197> ",  $"{dndUsers} users are on Do Not Disturb", true)
-                   .AddField("Idle Members <:away2:464520569862357002> ", $"{idleUsers} users are idle", true)
+                   //.AddField("Member Count", $"{users.Count} users are in this server", true )
+                   //.AddField("Online Members <:online2:464520569975603200> ", $"{onlineUsers} users are online", true)
+                   //.AddField("Offline Members <:offline2:464520569929334784>", $"{offlineUsers} users are offline", true)
+                   //.AddField("Do Not Disturb Members <:dnd2:464520569560498197> ",  $"{dndUsers} users are on Do Not Disturb", true)
+                   //.AddField("Idle Members <:away2:464520569862357002> ", $"{idleUsers} users are idle", true)
                    .WithCurrentTimestamp();
 
             var embed = builder.Build();
