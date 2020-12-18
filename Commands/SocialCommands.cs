@@ -29,7 +29,7 @@ namespace Brobot.Commands
         {
             var builder = new EmbedBuilder()
                 .WithTitle("Donate")
-                .WithUrl("https://streamelements.com/davcam0055/tip")
+                .WithUrl("https://streamelements.com/davidekingofitaly/tip")
                 .WithDescription("Donate to the owner of the bot. The link sends you to StreamElements tip page. run `social.twitch` to know when TheDeveloper#2860 streams. You can also donate on https://patreon.com/davidecammarano")
                 .WithColor(3, 69, 252);
 
@@ -43,8 +43,8 @@ namespace Brobot.Commands
         {
             var builder = new EmbedBuilder()
                 .WithTitle("DavCam0055's Twitch Page")
-                .WithUrl("https://twitch.tv/davcam0055")
-                .WithDescription("DavCam0055 (TheDeveloper#2860) streams on twitch, check the page to know more")
+                .WithUrl("https://twitch.tv/davidekingofitaly")
+                .WithDescription("Davide, King of Italy (TheDeveloper#2860) streams on twitch, check the page to know more")
                 .WithColor(169, 3, 252);
 
             var embed = builder.Build();
