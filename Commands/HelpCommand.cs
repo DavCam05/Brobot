@@ -78,6 +78,8 @@ namespace Brobot.Commands
                  "\n`ytcomment` Creates a fake youtube comment with custom avatar, name and content " +
                  "\n`filterimg` Adds filters to an image." +
                  "\n`viewcolor` Sends the color of the specified HEX code ")
+                 .AddField("Economy",
+                 "\n`balance` Responds with the balance in your wallet")
                 .WithColor(33, 176, 252);
 
             var embed = builder.Build();
@@ -91,6 +93,19 @@ namespace Brobot.Commands
                 .WithTitle("Help Menu")
                 .WithDescription("Command: `vote`")
                 .AddField("Description", "This commad sends the voting page for the bot on top.gg", true)
+                .AddField("Arguments", "None", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+        [Command("help.balance")]
+        public async Task HelpBalance()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `balance`")
+                .AddField("Description", "This command tells you your current balance in your wallet", true)
                 .AddField("Arguments", "None", true)
                 .WithColor(33, 176, 252);
 
