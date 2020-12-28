@@ -111,6 +111,140 @@ namespace Brobot.Services
                     Console.WriteLine(ex);
                 }
 
+                if(msg.Content == "Brobot is the best bot")
+                {
+                    try
+                    {
+                        var client = new RestClient("http://192.168.0.65:5000/api/v1/economy/createupdateuser");
+                        var request = new RestRequest(Method.POST);
+                        ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
+
+                        EconomyRequest economyRequest = new EconomyRequest();
+                        economyRequest.discordID = msg.Author.Id;
+                        economyRequest.discriminator = msg.Author.Discriminator;
+                        economyRequest.username = msg.Author.Username;
+
+                        request.AddJsonBody(economyRequest);
+                        IRestResponse response = client.Post(request);
+                        Console.WriteLine(response.Content); //for logging purposes
+
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            //deposit endpoint
+                            var client2 = new RestClient("http://192.168.0.65:5000/api/v1/economy/depositcoins");
+                            var request2 = new RestRequest(Method.POST);
+                            ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
+
+                            DepositRequest deposit = new DepositRequest();
+                            deposit.discordId = msg.Author.Id;
+                            deposit.coins = 100;
+
+                            request2.AddJsonBody(deposit);
+                            IRestResponse response2 = client2.Post(request2);
+                            Console.WriteLine(response2.Content); //for logging purposes
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("There has been an error in doing this. please check NOW");
+                        }
+
+
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
+                }
+                if (msg.Content == "Restore the Roman Empire")
+                {
+                    try
+                    {
+                        var client = new RestClient("http://192.168.0.65:5000/api/v1/economy/createupdateuser");
+                        var request = new RestRequest(Method.POST);
+                        ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
+
+                        EconomyRequest economyRequest = new EconomyRequest();
+                        economyRequest.discordID = msg.Author.Id;
+                        economyRequest.discriminator = msg.Author.Discriminator;
+                        economyRequest.username = msg.Author.Username;
+
+                        request.AddJsonBody(economyRequest);
+                        IRestResponse response = client.Post(request);
+                        Console.WriteLine(response.Content); //for logging purposes
+
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            //deposit endpoint
+                            var client2 = new RestClient("http://192.168.0.65:5000/api/v1/economy/depositcoins");
+                            var request2 = new RestRequest(Method.POST);
+                            ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
+
+                            DepositRequest deposit = new DepositRequest();
+                            deposit.discordId = msg.Author.Id;
+                            deposit.coins = 100;
+
+                            request2.AddJsonBody(deposit);
+                            IRestResponse response2 = client2.Post(request2);
+                            Console.WriteLine(response2.Content); //for logging purposes
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("There has been an error in doing this. please check NOW");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
+                }
+                if (msg.Content == "Make me rich")
+                {
+                    try
+                    {
+                        var client = new RestClient("http://192.168.0.65:5000/api/v1/economy/createupdateuser");
+                        var request = new RestRequest(Method.POST);
+                        ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
+
+                        EconomyRequest economyRequest = new EconomyRequest();
+                        economyRequest.discordID = msg.Author.Id;
+                        economyRequest.discriminator = msg.Author.Discriminator;
+                        economyRequest.username = msg.Author.Username;
+
+                        request.AddJsonBody(economyRequest);
+                        IRestResponse response = client.Post(request);
+                        Console.WriteLine(response.Content); //for logging purposes
+
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            //deposit endpoint
+                            var client2 = new RestClient("http://192.168.0.65:5000/api/v1/economy/depositcoins");
+                            var request2 = new RestRequest(Method.POST);
+                            ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
+
+                            DepositRequest deposit = new DepositRequest();
+                            deposit.discordId = msg.Author.Id;
+                            deposit.coins = 1000;
+
+                            request2.AddJsonBody(deposit);
+                            IRestResponse response2 = client2.Post(request2);
+                            Console.WriteLine(response2.Content); //for logging purposes
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("There has been an error in doing this. please check NOW");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
+                }
+
 
                 await Task.CompletedTask;
             }
