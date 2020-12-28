@@ -35,7 +35,7 @@ namespace Brobot.Commands
             var builder = new EmbedBuilder()
                 .WithTitle($"Balance for {Context.User.Username}")
                 .AddField("Current Balance:", $"{result.balance} coins")
-                .AddField("Last Updated", $"{result.lastUpdate}")
+                //.AddField("Last Updated", $"{result.lastUpdate}")
                 .WithColor(3, 115, 9);
 
             var embed = builder.Build();
