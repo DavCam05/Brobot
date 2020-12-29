@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
-using AutoMapper.QueryableExtensions;
-using Brobot.Models;
 using Brobot.Models.Economy;
 using Discord;
 using Discord.Commands;
-using Discord.WebSocket;
 using Newtonsoft.Json;
 using RestSharp;
 

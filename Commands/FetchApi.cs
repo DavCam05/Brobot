@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Brobot.Helpers;
 using Brobot.Models;
 using Discord;
 using Discord.Commands;
@@ -86,6 +87,7 @@ namespace Brobot.Commands
                 var embed = builder.Build();
                 await Context.Channel.SendMessageAsync(null, false, embed);
                 Console.WriteLine("Search was Successful");
+                EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 10);
             }
         }
 
@@ -135,6 +137,7 @@ namespace Brobot.Commands
                 var embed = builder.Build();
                 await Context.Channel.SendMessageAsync(null, false, embed);
                 Console.WriteLine("Search was Successful");
+                EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 10);
             }
         }
 
@@ -158,6 +161,7 @@ namespace Brobot.Commands
             var embed = builder.Build();
             await Context.Channel.SendMessageAsync(null, false, embed);
             Console.WriteLine("Search was Successful");
+            EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 10);
         }
 
         [Command("memetemplates")]
@@ -167,6 +171,7 @@ namespace Brobot.Commands
             var template = await service.GetRandomMemeTemplateAsync();
 
             await Context.Channel.SendMessageAsync($"{template.Url}");
+            EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 2);
         }
 
         [Command("news")]
@@ -184,6 +189,7 @@ namespace Brobot.Commands
             if (articlesResponse.Status == Statuses.Ok)
             {
                 await Context.Channel.SendMessageAsync($"Results Found: {articlesResponse.TotalResults}");
+                EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 7);
                 // total results found
                 Console.WriteLine(articlesResponse.TotalResults);
                 // here's the first 20
@@ -230,6 +236,7 @@ namespace Brobot.Commands
 
             var embed = builder.Build();
             await Context.Channel.SendMessageAsync(null, false, embed);
+            EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 20);
 
         }
 
@@ -259,7 +266,8 @@ namespace Brobot.Commands
 
             var embed = builder.Build();
             await Context.Channel.SendMessageAsync(null, false, embed);
-        
+            EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 1);
+
         }
 
         [Command("dadjoke")]
@@ -282,6 +290,7 @@ namespace Brobot.Commands
             var embed = builder.Build();
 
             await Context.Channel.SendMessageAsync(null, false, embed);
+            EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 100);
         }
 
         [Command("game")]
@@ -308,6 +317,7 @@ namespace Brobot.Commands
             var embed = builder.Build();
 
             await Context.Channel.SendMessageAsync(null, false, embed);
+            EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 10);
         }
 
         [Command("pokemon")] //Command still in development, DO NOT ADD TO HELP COMMAND 
