@@ -3,6 +3,7 @@
 [![Issues](https://img.shields.io/github/issues/DavCam05/Brobot)](https://github.com/DavCam05/Brobot/issues)
 [![Licence](https://img.shields.io/github/license/DavCam05/Brobot)](https://github.com/DavCam05/Brobot/blob/master/LICENSE)
 [![Release](https://img.shields.io/github/v/release/DavCam05/Brobot)](https://github.com/DavCam05/Brobot/releases)
+[![Discord Bots](https://top.gg/api/widget/status/755427910306889820.svg)](https://top.gg/bot/755427910306889820)
 
 
 
