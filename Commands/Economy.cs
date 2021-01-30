@@ -14,7 +14,7 @@ namespace Brobot.Commands
         [Command("balance")]
         public async Task CheckBal()
         {
-            var client = new RestClient($"http://192.168.0.65:5000/api/v1/economy/getbalance/");
+            var client = new RestClient($"http://192.168.0.77:5000/api/v1/economy/getbalance/");
             var request = new RestRequest(Method.POST); 
             ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
 
