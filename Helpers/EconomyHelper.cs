@@ -17,7 +17,7 @@ namespace Brobot.Helpers
         {
             try
             {
-                var client = new RestClient("http://192.168.0.65:5000/api/v1/economy/createupdateuser");
+                var client = new RestClient("http://192.168.0.77:5000/api/v1/economy/createupdateuser");
                 var request = new RestRequest(Method.POST);
                 ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
 
@@ -33,7 +33,7 @@ namespace Brobot.Helpers
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     //deposit endpoint
-                    var client2 = new RestClient("http://192.168.0.65:5000/api/v1/economy/depositcoins");
+                    var client2 = new RestClient("http://192.168.0.77:5000/api/v1/economy/depositcoins");
                     var request2 = new RestRequest(Method.POST);
                     ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
 
