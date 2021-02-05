@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Brobot.Models.Economy;
 using Discord;
 using Discord.Commands;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -11,10 +12,17 @@ namespace Brobot.Commands
 {
     public class Economy : ModuleBase
     {
+
+        public static IConfigurationRoot _config;
+        public Economy(IConfigurationRoot config)
+        {
+            _config = config;
+
+        }
         [Command("balance")]
         public async Task CheckBal()
         {
-            var client = new RestClient($"http://192.168.0.65:5000/api/v1/economy/getbalance/");
+            var client = new RestClient(_config["brobotapibaseurl"] +"/api/v1/economy/getbalance/");
             var request = new RestRequest(Method.POST); 
             ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
 

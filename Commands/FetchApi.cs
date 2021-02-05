@@ -87,7 +87,7 @@ namespace Brobot.Commands
                 var embed = builder.Build();
                 await Context.Channel.SendMessageAsync(null, false, embed);
                 Console.WriteLine("Search was Successful");
-                EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 10);
+                EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 10, _config["brobotapibaseurl"]);
             }
         }
 
@@ -137,7 +137,7 @@ namespace Brobot.Commands
                 var embed = builder.Build();
                 await Context.Channel.SendMessageAsync(null, false, embed);
                 Console.WriteLine("Search was Successful");
-                EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 10);
+                EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 10, _config["brobotapibaseurl"]);
             }
         }
 
@@ -161,7 +161,7 @@ namespace Brobot.Commands
             var embed = builder.Build();
             await Context.Channel.SendMessageAsync(null, false, embed);
             Console.WriteLine("Search was Successful");
-            EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 10);
+            EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 10, _config["brobotapibaseurl"]);
         }
 
         [Command("memetemplates")]
@@ -171,7 +171,7 @@ namespace Brobot.Commands
             var template = await service.GetRandomMemeTemplateAsync();
 
             await Context.Channel.SendMessageAsync($"{template.Url}");
-            EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 2);
+            EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 2, _config["brobotapibaseurl"]);
         }
 
         [Command("news")]
@@ -189,7 +189,7 @@ namespace Brobot.Commands
             if (articlesResponse.Status == Statuses.Ok)
             {
                 await Context.Channel.SendMessageAsync($"Results Found: {articlesResponse.TotalResults}");
-                EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 7);
+                EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 7, _config["brobotapibaseurl"]);
                 // total results found
                 Console.WriteLine(articlesResponse.TotalResults);
                 // here's the first 20
@@ -236,7 +236,7 @@ namespace Brobot.Commands
 
             var embed = builder.Build();
             await Context.Channel.SendMessageAsync(null, false, embed);
-            EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 20);
+            EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 20, _config["brobotapibaseurl"]);
 
         }
 
@@ -266,7 +266,7 @@ namespace Brobot.Commands
 
             var embed = builder.Build();
             await Context.Channel.SendMessageAsync(null, false, embed);
-            EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 1);
+            EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 1, _config["brobotapibaseurl"]);
 
         }
 
@@ -290,7 +290,7 @@ namespace Brobot.Commands
             var embed = builder.Build();
 
             await Context.Channel.SendMessageAsync(null, false, embed);
-            EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 100);
+            EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 100, _config["brobotapibaseurl"]);
         }
 
         [Command("game")]
@@ -317,7 +317,7 @@ namespace Brobot.Commands
             var embed = builder.Build();
 
             await Context.Channel.SendMessageAsync(null, false, embed);
-            EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 10);
+            EconomyHelper.DepositEconomy(Context.User.Id, Context.User.Discriminator, Context.User.Username, 10, _config["brobotapibaseurl"]);
         }
 
         [Command("pokemon")] //Command still in development, DO NOT ADD TO HELP COMMAND 

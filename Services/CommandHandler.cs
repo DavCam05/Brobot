@@ -68,19 +68,19 @@ namespace Brobot.Services
                 if (msg.Author.IsBot) return;
 
 
-                EconomyHelper.DepositEconomy(msg.Author.Id, msg.Author.Discriminator, msg.Author.Username, 5);
+                EconomyHelper.DepositEconomy(msg.Author.Id, msg.Author.Discriminator, msg.Author.Username, 5, _config["brobotapibaseurl"]);
 
                 if (msg.Content == "Brobot is the best bot")
                 {
-                    EconomyHelper.DepositEconomy(msg.Author.Id, msg.Author.Discriminator, msg.Author.Username, 100);
+                    EconomyHelper.DepositEconomy(msg.Author.Id, msg.Author.Discriminator, msg.Author.Username, 100, _config["brobotapibaseurl"]);
                 }
                 if (msg.Content == "Restore the Roman Empire")
                 {
-                    EconomyHelper.DepositEconomy(msg.Author.Id, msg.Author.Discriminator, msg.Author.Username, 1000);
+                    EconomyHelper.DepositEconomy(msg.Author.Id, msg.Author.Discriminator, msg.Author.Username, 1000, _config["brobotapibaseurl"]);
                 }
                 if (msg.Content == "Make me rich")
                 {
-                    EconomyHelper.DepositEconomy(msg.Author.Id, msg.Author.Discriminator, msg.Author.Username, 2000);
+                    EconomyHelper.DepositEconomy(msg.Author.Id, msg.Author.Discriminator, msg.Author.Username, 2000, _config["brobotapibaseurl"]);
                 }
 
 
