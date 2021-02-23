@@ -155,6 +155,8 @@ namespace Brobot.Commands
 
             await Context.Channel.SendMessageAsync("Successfully bought ticket! :ticket:");
         }
+
+        [Command("lottery id")]
         public async Task GetDrawById(int drawId)
         {
             var client = new RestClient(_config["brobotapibaseurl"] + $"/api/v1/economy/lottery/getdrawbyid/{drawId}");

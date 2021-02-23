@@ -79,11 +79,27 @@ namespace Brobot.Commands
                  "\n`filterimg` Adds filters to an image." +
                  "\n`viewcolor` Sends the color of the specified HEX code ")
                  .AddField("Economy",
-                 "\n`balance` Responds with the balance in your wallet")
+                 "\n`balance` Responds with the balance in your wallet" +
+                 "\n`lottery` commands related to the lottery. Use `help.lottery` for list of arguments")
                 .WithColor(33, 176, 252);
 
             var embed = builder.Build();
             await Context.Channel.SendMessageAsync(null, false, embed);
+        }
+
+        [Command("help.lottery")]
+        public async Task Helplotteryactive()
+        {
+            var builder = new EmbedBuilder()
+                .WithTitle("Help Menu")
+                .WithDescription("Command: `lottery`")
+                .AddField("Description", "this command shows all the active lotteries", true)
+                .AddField("Arguments", "`<'active'>` shows all the active lotteries `<'closed'>` shows all the closed lotteries `<id>` the lottery id", true)
+                .WithColor(33, 176, 252);
+
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+        
         }
 
         [Command("help.vote")]
