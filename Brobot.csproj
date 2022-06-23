@@ -23,7 +23,7 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.9" />
     <PackageReference Include="NetEscapades.Configuration.Yaml" Version="2.0.1" />
     <PackageReference Include="NewsAPI" Version="0.6.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="OMDbSharp" Version="0.3.0" />
     <PackageReference Include="PokeApiNet" Version="3.0.0" />
     <PackageReference Include="RestSharp" Version="106.11.7" />
